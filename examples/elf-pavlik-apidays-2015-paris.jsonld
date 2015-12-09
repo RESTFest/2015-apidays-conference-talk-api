@@ -1,5 +1,5 @@
 {
-  "@context": "https://rawgit.com/RESTFest/2015-apidays-conference-talk-api/tree/json-ld/translators/json-ld/context.jsonld",
+  "@context": "https://rawgit.com/RESTFest/2015-apidays-conference-talk-api/tree/json-ld/translators/json-ld/context.json",
     "@id": "https://graph.hackers4peace.net/b8b6212a-59f7-4b2b-93ea-7193d271a74c#id",
     "@type": "SessionProposal",
     "conference": {

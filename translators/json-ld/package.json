@@ -1,0 +1,16 @@
+{
+  "name": "conftalk2jsonld",
+  "version": "0.0.1",
+  "description": "",
+  "main": "convert.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "Unlicense",
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "node-uuid": "^1.4.7",
+    "object-assign": "^4.0.1"
+  }
+}

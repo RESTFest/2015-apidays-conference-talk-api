@@ -1,0 +1,26 @@
+{
+  "proposal": {
+    "title": "An Introduction To Media Type Design",
+    "brief-description": "Blah Blah Blah",
+    "full-description": "Even longer blah Blah Blah",
+    "keywords": ["javascript", "java", "http"],
+    "length": {
+      "preferred": 60,
+      "min": 45,
+      "max": 90
+    },
+    "presenters": [{
+      "name": "Darrel Miller",
+      "email": "darrel@example.com"
+    },
+    {
+      "name" : "Bob Brown",
+      "email" : "bob@yahoo.com"
+    }]
+  },
+  "past-presentations": [{
+    "presentation-date": "20150911",
+    "conference": "UberConf"
+  }]
+}
+
