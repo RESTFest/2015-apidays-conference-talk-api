@@ -1,0 +1,187 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "title": "Conference Talks",
+  "description": "This is a JSON Schema describing the media type 'conference-talk' by Darrel Miller",
+  "name": "/",
+  "properties": {
+    "proposal": { "$ref": "#/definitions/proposal" },
+    "presenters": { "$ref": "#/definitions/presenters"}
+  },
+  "definitions": 
+  {
+    "proposal": {
+      "id": "http://jsonschema.net/proposal",
+      "type": "object",
+      "title": "Conference Talk Proposal",
+      "description": "This object encapsulates a conference talk proposal.",
+      "name": "proposal",
+      "properties": {
+        "title": {
+          "id": "http://jsonschema.net/proposal/title",
+          "type": "string",
+          "title": "The title of the proposed talk",
+          "description": "An explanation about the puropose of this instance described by this schema.",
+          "name": "title"
+        },
+        "brief-description": {
+          "id": "http://jsonschema.net/proposal/brief-description",
+          "type": "string",
+          "title": "Brief description",
+          "description": "A brief description of the conference talk proposal.",
+          "name": "brief-description"
+        },
+        "full-description": {
+          "id": "http://jsonschema.net/proposal/full-description",
+          "type": "string",
+          "title": "Full description",
+          "description": "The full description of the conference talk proposal.",
+          "name": "full-description"
+        },
+        "keywords": {
+          "id": "http://jsonschema.net/proposal/keywords",
+          "type": "array",
+          "title": "Keywords",
+          "description": "Keywords matching the topic of your conference talk proposal.",
+          "name": "keywords",
+          "items": [
+            {
+              "type": "string",
+              "title": "Keyword",
+              "description": "A conference talk proposal keyword."
+            }
+          ]
+        },
+        "length": {
+          "id": "http://jsonschema.net/proposal/length",
+          "type": "object",
+          "title": "Length schema.",
+          "description": "An explanation about the puropose of this instance described by this schema.",
+          "name": "length",
+          "properties": {
+            "preferred": {
+              "id": "http://jsonschema.net/proposal/length/preferred",
+              "type": "integer",
+              "title": "Preferred duration",
+              "description": "The preferred duration (in minutes) of the presentation.",
+              "name": "preferred"
+            },
+            "min": {
+              "id": "http://jsonschema.net/proposal/length/min",
+              "type": "integer",
+              "title": "Minimum duration",
+              "description": "The minimum duration (in minutes) of the presentation.",
+              "name": "min"
+            },
+            "max": {
+              "id": "http://jsonschema.net/proposal/length/max",
+              "type": "integer",
+              "title": "Maximum duration",
+              "description": "The minimum duration (in minutes) of the presentation.",
+              "name": "max"
+            }
+          }
+        },
+        "presenters": {"$ref": "#/definitions/presenters"},
+        "links": { "$ref": "#/definitions/links" },
+
+        "past-presentations": {
+          "id": "http://jsonschema.net/proposal/past-presentations",
+          "type": "array",
+          "title": "Past presentations",
+          "description": "Past presentations of the proposed talk.",
+          "name": "past-presentations",
+          "items": {
+            "type": "object",
+            "title": "Past presentation",
+            "description": "",
+            "properties": {
+              "presentation-date": {
+                "type": "string",
+                "title": "Presentation date",
+                "description": "The date the presentation was presented.",
+                "name": "presentation-date"
+              },
+              "conference": {
+                "type": "string",
+                "title": "Conference name",
+                "description": "The name of the conference this presentation was presented.",
+                "name": "conference"
+              },
+              "links": { "$ref": "#/definitions/links" }
+            }
+          }
+        }
+      },
+      "required": [
+        "title",
+        "brief-description",
+        "full-description",
+        "keywords",
+        "length",
+        "presenters",
+        "past-presentations"
+      ]
+    },
+    "presenters": {
+      "id": "http://jsonschema.net/proposal/presenters",
+      "type": "array",
+      "title": "Presenters",
+      "description": "The presenters of the proposed conference talk.",
+      "name": "presenters",
+      "items": [
+        {
+          "type": "object",
+          "title": "Presenter",
+          "description": "A presenter of the proposed conference talk.",
+          "properties": {
+            "name": {
+              "type": "string",
+              "title": "Presenter Name",
+              "description": "The full name of the presenter.",
+              "name": "name"
+            },
+            "email": {
+              "type": "string",
+              "title": "Presenter Email address",
+              "description": "The email address of the presenter.",
+              "name": "email"
+            },
+            "links": { "$ref": "#/definitions/links" }
+          }
+        }
+      ]
+    },
+    "links": {
+      "id": "http://jsonschema.net/links",
+      "type": "array",
+      "title": "Links",
+      "description": "A collection of links related to the parent topic.",
+      "name": "links",
+      "items": {
+        "type": "object",
+        "title": "Link",
+        "description": "A link may link to any given URL; you will need to parse the media type to find out what it is.",
+        "properties": {
+          "rel": {
+            "type": "string",
+            "title": "Link relation",
+            "description": "The name of the link relation.",
+            "name": "rel"
+          },
+          "href": {
+            "type": "string",
+            "title": "Link URL",
+            "description": "The actual link, as an URL.",
+            "name": "href"
+          }
+        },
+        "required": [
+          "rel",
+          "href"
+        ]
+      }
+    }
+  }
+}
