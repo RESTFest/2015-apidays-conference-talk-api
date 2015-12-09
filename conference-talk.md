@@ -83,9 +83,9 @@ A minimal submission might look like this:
     { "proposal" : {
       "title" : "An Introduction To Media Type Design",
       "brief-description" : "Blah Blah Blah",
-      "presenter" : {
-        "name" : "Darrel Miller",
-       }
+      "presenters" : [{
+        "name" : "Darrel Miller"
+       }]
       }
     }
 
@@ -147,7 +147,6 @@ There is no fixed structure to the root object. It can contain any number of pro
 ## 1:1 Relationships
 Certain structures can contain other structures in a 1:1 relationship. E.g.
 
-- A `proposal` structure can contain a `presenter` structure or `presenters` array to indicate the  presenter(s).  
 - A `presentation` structure can contain a `presenter` structure indicating who was the primary presenter of a past presentation.
 - A `presentation` structure can contain a `proposal` structure indicating the proposal that was submitted and selected for the presentation.
 - A `presentation` structure can contain a `conference` structure indicating the conference at which the presentation was presented.
