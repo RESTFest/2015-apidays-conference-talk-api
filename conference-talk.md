@@ -319,9 +319,6 @@ The `presentation` structure is a historical record of a talk described by a pro
 ### presentation-date
 This property represents the date that a particular talk was given. The date should be in ISO 8601 format as required by I-JSON.  
 
-### conference
-The name of the conference where the presentation was given. This is a string value.
-
 ### location
 The physical location where conference is being held. This can simply country or city and country. This is a string value.  
 
