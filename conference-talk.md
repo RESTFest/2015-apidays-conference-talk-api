@@ -76,13 +76,17 @@ The key words \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"
 
 The canonical model for a conference-talk document is a JSON object as defined in the I-JSON specification {{!RFC7493}}. The properties of the JSON object can be any valid vocabulary term from this specification. Unrecognized vocabulary should be ignored unless a consumer explicitly requests strict processing of the document.
 
+[Note]  Add comment about support of http://tools.ietf.org/html/draft-pbryan-zyp-json-ref-03
+
 A minimal submission might look like this:
 
 ~~~~~~~~~~
 
-    { "proposal" : {
-      "title" : "An Introduction To Media Type Design",
-      "brief-description" : "Blah Blah Blah",
+    { "session" : {
+        "presentation" : {
+            "title" : "An Introduction To Media Type Design",
+            "brief-description" : "Blah Blah Blah",
+            },
       "presenters" : [{
         "name" : "Darrel Miller"
        }]
@@ -91,21 +95,30 @@ A minimal submission might look like this:
 
 ~~~~~~~~~~
 
-A more complete proposal might look like,
+A more complete session proposal might look like,
 
 ~~~~~~~~~~
 
 {
-  "proposal": {
-    "title": "An Introduction To Media Type Design",
-    "brief-description": "Blah Blah Blah",
-    "full-description": "Even longer blah Blah Blah",
-    "keywords": ["javascript", "java", "http"],
-    "length": {
-      "preferred": 60,
-      "min": 45,
-      "max": 90
+  "session": {
+    "presentation" : {
+      "title": "An Introduction To Media Type Design",
+      "brief-description": "Blah Blah Blah",
+      "full-description": "Even longer blah Blah Blah",  
+      "length": {
+        "preferred": 60,
+        "min": 45,
+        "max": 90
+      },
+      "past-sessions": [{
+        "presentation-date": "20150911",
+        "conference": {
+            "name" : "The Meta Conference"
+        }
+      }]
     },
+    "slot-length" : 45,
+    "keywords": ["javascript", "java", "http"],
     "presenters": [{
       "name": "Darrel Miller",
       "email": "darrel@example.com"
@@ -114,20 +127,15 @@ A more complete proposal might look like,
       "name" : "Bob Brown",
       "email" : "bob@yahoo.com"
       }]
-  },
-
-  "past-presentations": [{
-    "presentation-date": "20150911",
-    "conference": "UberConf"
-  }]
+  }
 }
 
 ~~~~~~~~~~
 
-This specification is intended primarily to describe a message format that only exists to transfer information between two independent systems. It is not intended as a persistence format or a content creation format. JSON is ideal for this purpose. However, it should be fairly straightforward to apply the structure and semantics defined in this document to other formats.
+This specification is intended primarily to describe a message format to transfer information between two independent systems. Requirements of persistence formats or content creation formats are a secondary concern. JSON is ideal for this purpose. However, it should be fairly straightforward to apply the structure and semantics defined in this document to other formats.
 
 # Structure
-This media type is designed to hold information related to conference proposals, their presenters and the presentations of those sessions.  However, it imposes minimal structural constraints on the document. This is done in order to support as many scenarios as possible. A document instance may be used to submit a new proposal to a conference. Or it may be used to return a list of presentations that were held at a conference. It can also be used to return a list of presenters who will be speaking at a conference. The overall structure is fairly flexible, but the semantics of the named structures within the document are well defined.  
+This media type is designed to hold information related to conference presentations, their presenters and the information about presented sessions.  However, it imposes minimal structural constraints on the document. This is done in order to support as many scenarios as possible. A document instance may be used to submit a new proposal to a conference. Or it may be used to return a list of presentations that were held at a conference. It can also be used to return a list of presenters who will be speaking at a conference. The overall structure is fairly flexible, but the semantics of the named structures within the document are well defined.  
 
 A conference-talk document may be valid, but still incompatible with a particular resource that only accepts `conference-talk` documents structured in a certain way.
 
@@ -137,7 +145,7 @@ The root of the document MUST be a JSON object, whose properties names are struc
 ~~~~~~~~~~
     {
       "presenter" : {...} },
-      "proposals" : [...] },
+      "sessions" : [...] },
       "presentations" : [...] },
     }
 ~~~~~~~~~~
@@ -147,17 +155,16 @@ There is no fixed structure to the root object. It can contain any number of pro
 ## 1:1 Relationships
 Certain structures can contain other structures in a 1:1 relationship. E.g.
 
-- A `presentation` structure can contain a `presenter` structure indicating who was the primary presenter of a past presentation.
-- A `presentation` structure can contain a `proposal` structure indicating the proposal that was submitted and selected for the presentation.
-- A `presentation` structure can contain a `conference` structure indicating the conference at which the presentation was presented.
+- A `session` structure can contain a `presentation` structure describing the content of the presentation that was submitted.
+- A `session` structure can contain a `conference` structure indicating the conference at which the presentation was presented.
 
 ## 1:M Relationships
 Lists of structures can be contained as an attribute of other structures to indicate a relationship between the structures.  For example:
 
-- `presenter` can have a list attribute called `proposals` containing `proposal` structures.
+- `presenter` can have a list attribute called `sessions` containing `session` structures.
 - `presenter` can have a list attribute called `presentations` containing `presentation` structures.
-- `proposal` can have a list attribute called `past-presentations` containing `presentation` structures.
-- `proposal` can have a list attribute called `presenters` containing `presenter` structures.
+- `presentation` can have a list attribute called `past-sessions` containing `session` structures.
+- `session` can have a list attribute called `presenters` containing `presenter` structures.
 
 ## Links
 All structures defined in this vocabulary can contain a property called  `links`.  This property contains an array of `link` objects.  Links are a way to break apart pieces of the document for the purposes of reuse and controlling granularity.  Through the use of relative URIs and fragments we can use links with the document to reduce redundancy.
@@ -179,24 +186,28 @@ Note: There was no need to adopt the HAL convention of using _Links as the allow
 Link relations values defined in the `conference-talk` conference talk document can be used as simple strings as long as they are prefixed with a period. However, any parsing tool must map them to a URI using the following URI template https://tavis.net/rels/conference-talk/{relname}.
 
 #### href
-The href property can resolve to a relative URI and use relative fragment identifiers to point to content within the current document. Fragment identifiers follow the scheme defined by the JSON-Pointer specification. This prevents the need to duplicate content within a document.
+The href property can resolve to a relative URI and use relative fragment identifiers to point to content within the current document. Fragment identifiers follow the scheme defined by the JSON Pointer specification {{!RFC6901}}. This prevents the need to duplicate content within a document.
 
 For example, the sample below has an array of proposals, and each one points to a presenter structure and conference structure.
 
 ~~~~~~~~~~
 
-    { "proposals" : [
+    { "sessions" : [
         {
+          "presentation" : {
              "title" : "An Introduction To Media Type Design",
-             "brief-description" : "Blah Blah Blah",
+             "brief-description" : "Blah Blah Blah"
+           },
             "links" [
               { "rel" : ".presenter", "href" : "#presenter"},
               { "rel" : ".conference", "href" : "#conference"}
             ]
         },
         {
+          "presentation" : {
             "title" : "Crafting Evolvable Representations",
-            "brief-description" : "Double blah",
+            "brief-description" : "Double blah"
+            },
             "links" [
               { "rel" : ".presenter", "href" : "#presenter"},
               { "rel" : ".conference", "href" : "#conference"}
@@ -205,7 +216,7 @@ For example, the sample below has an array of proposals, and each one points to 
     ],
   "presenter" : {
       "name" : "Darrel Miller",
-      "bio"  : "blah blah blah"
+      "bio"  : "Destined to re-invent RDF"
     },
   "conference" : {
       "name" : "The Meta Conference",
@@ -219,8 +230,8 @@ For example, the sample below has an array of proposals, and each one points to 
 
 ## Arrays of Structures
 
-### proposals
-An array of `proposal` structures.
+### sessions
+An array of `session` structures.
 
 ### presentations
 An array of `presentation` structures.
@@ -231,64 +242,18 @@ An array of `presenter` structures.
 ### conferences
 An array of `conference` structures.
 
-## proposal
-The proposal structure represents a description of a single conference session.  The only required property of the proposal structure is the title property.
+## session
+The session structure represents a proposal to a conference and a record of the given presentation.  The  `presentation` and `conference` property are required.
 
-### title
-The title property is a single sentence description of the talk, normally used as a heading.  This is a required property.  Physical limits on the size of descriptive fields like this one are left to the choice of implementers.  If a specific implementation chooses to limit titles to 80 characters and it subsequently receives a document with a title that exceeds that amount, the implementation must choose whether to refuse the content, or to truncate it.
+### presentation-date
+This property represents the date that a particular talk was given. The date should be in ISO 8601 format as required by I-JSON.  
 
-### brief-description
-Conferences often ask for short descriptions of sessions to be used on web sites or in promotional material. Some conferences insist on brief descriptions to reduce the time it takes for the selection committee to process the proposals.  This specification currently does not enforce the size of a brief description and therefore there may be cases where a brief-description submitted to one conference is not accepted to another because they have differing opinions on what brief means. Feedback will drive whether a hard limit is included in this specification.
+### location
+The physical location where conference is being held. This can simply country or city and country. This is a string value.  
 
-### full-description
-Sometimes a brief description is sufficient to spark interest in a talk, but the reader wishes to get more details.  The full-description of the session can be used to go into detail about the presentation.  Implementations can choose whether this description is made public or not.
+### attendee-quantity
+This field is a number that provides an approximate quantity of people who attended the presentation.
 
-### selection-notes
-It is common for proposals to have additional information that is only directed at the selection committee. This information would not be made public.
-
-### tags
-The tags attribute contains an array of strings used for the purpose of classifying talks into categories. Although different conferences may use different sets of tags, in a communication between speaker and conference organizer, only one set of tags is valid.  For client applications that might store conference proposals for speakers, it may be necessary to store multiple sets of tags to accomadate submissions to different conferences.  However, this specification is not aiming to describe a storage format.
-
-~~~~~~~
-
-tags : ["testing","performance"]
-
-~~~~~~~
-
-### target-audience
-Conference sessions are often rated based on their technical difficulty.This property is numeric value on the scale of 1 to 5, where 1 indicates no experience is required to benefit from the session, to 5 which indicates the audience require a strong knowledge in the subject matter to fully appreciate the talk.
-
-~~~~~~~
-target-audience : 1
-~~~~~~~
-
-Conference organizers are free to map this range of values to whatever equivalent ranking scheme they use.
-
-### length
-Different conferences have different sessions lengths.  Sometimes the same conference has sessions of different lengths.  It is not uncommon for speakers to have some flexibility in how long a particular talk can take.  In order to accomodate these different scenarios, the length property is defined using three values : `preferred-length`,`max-length` and `min-length`.  All three values are specified in integer minutes.
-By specifying a range, conferences can determine if a talk can fit into the planned slots.
-
-~~~~~~~
-length : {
-  "preferred" : 45,
-  "max": 60,
-  "min" : 30
-}
-~~~~~~~
-
-### languages
-Some conferences are multi-lingual and sometimes speakers are able to perform talks in multiple languages.  The language property contains an array of language codes as described in {{!RFC5646}}.
-
-~~~~~~~
-language : ["en","fr"]
-~~~~~~~
-
-### talk-style
-Style is an identifier that classifies the type of talk being submitted.  This value is a string identifier from a set of valid values as defined by the conference being submitted to.
-
-~~~~~~~
-talk-style : "workshop"
-~~~~~~~
 
 ## presenter
 A `presenter` structure represents the information about a person who will or who has presented a conference talk.
@@ -313,19 +278,66 @@ An identifier that is related to a `presenter` selected from the list of availab
 An identifier that is related to a `presenter` selected from the list of available values as defined by the conference. This is a string value.
 
 ## presentation
-The `presentation` structure is a historical record of a talk described by a proposal structure that has been presented at a conference.
+The `presentation` structure contains the descriptive details of the presentation to be proposed as a session at a conference.  All properties of the presentation structure can be duplicated in a containing `session` structure to provide conference specific values.
 
-### presentation-date
-This property represents the date that a particular talk was given. The date should be in ISO 8601 format as required by I-JSON.  
+### title
+The title property is a single sentence description of the talk, normally used as a heading.  This is a required property.  Physical limits on the size of descriptive fields like this one are left to the choice of implementers.  If a specific implementation chooses to limit titles to 80 characters and it subsequently receives a document with a title that exceeds that amount, the implementation must choose whether to refuse the content, or to truncate it.
 
-### location
-The physical location where conference is being held. This can simply country or city and country. This is a string value.  
+### brief-description
+Conferences often ask for short descriptions of sessions to be used on web sites or in promotional material. Some conferences insist on brief descriptions to reduce the time it takes for the selection committee to process the proposals.  This specification currently does not enforce the size of a brief description and therefore there may be cases where a brief-description submitted to one conference is not accepted to another because they have differing opinions on what brief means. Feedback will drive whether a hard limit is included in this specification.
+
+### full-description
+Sometimes a brief description is sufficient to spark interest in a talk, but the reader wishes to get more details.  The full-description of the session can be used to go into detail about the presentation.  Implementations can choose whether this description is made public or not.
+
+### target-audience
+Conference sessions are often rated based on their technical difficulty.This property is numeric value on the scale of 1 to 5, where 1 indicates no experience is required to benefit from the session, to 5 which indicates the audience require a strong knowledge in the subject matter to fully appreciate the talk.
+
+~~~~~~~
+target-audience : 1
+~~~~~~~
+
+Conference organizers are free to map this range of values to whatever equivalent ranking scheme they use.
+
+### talk-style
+Style is an identifier that classifies the type of talk being submitted.  This value is a string identifier from a set of valid values as defined by the conference being submitted to.
+
+~~~~~~~
+talk-style : "workshop"
+~~~~~~~
+
+### selection-notes
+It is common for proposals to have additional information that is only directed at the selection committee. This information would not be made public.
+
+### tags
+The tags attribute contains an array of strings used for the purpose of classifying talks into categories. Although different conferences may use different sets of tags, in a communication between speaker and conference organizer, only one set of tags is valid.  For client applications that might store conference proposals for speakers, it may be necessary to store multiple sets of tags to accomadate submissions to different conferences.  However, this specification is not aiming to describe a storage format.
+
+~~~~~~~
+
+tags : ["testing","performance"]
+
+~~~~~~~
+
+### length
+Different conferences have different sessions lengths.  Sometimes the same conference has sessions of different lengths.  It is not uncommon for speakers to have some flexibility in how long a particular talk can take.  In order to accomodate these different scenarios, the length property is defined using three values : `preferred-length`,`max-length` and `min-length`.  All three values are specified in integer minutes.
+By specifying a range, conferences can determine if a talk can fit into the planned slots.
+
+~~~~~~~
+length : {
+  "preferred" : 45,
+  "max": 60,
+  "min" : 30
+}
+~~~~~~~
+
+### languages
+Some conferences are multi-lingual and sometimes speakers are able to perform talks in multiple languages.  The language property contains an array of language codes as described in {{!RFC5646}}.
+
+~~~~~~~
+language : ["en","fr"]
+~~~~~~~
 
 ### special-requirements
 This is a free form text field used to communicate to the conference organizers any special hardware, setup, or environmental requirements needed for this talk to be presented. This is a string value.
-
-### attendee-quantity
-This field is a number that provides an approximate quantity of people who attended the presentation.
 
 ## conference
 The `conference` structure is used to describe its purpose, its location, the timeline of events and the domains of valid values for properties like, `tags`, `talk-style` and `languages`.  It also can contain limits such as maximum lengths for `brief-description`, and `full-description`.   
