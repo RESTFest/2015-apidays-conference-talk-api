@@ -5,156 +5,8 @@
   "title": "Conference Talks",
   "description": "This is a JSON Schema describing the media type 'conference-talk' by Darrel Miller",
   "name": "/",
-  "properties": {
-    "proposal": { "$ref": "#/definitions/proposal" },
-    "presenters": { "$ref": "#/definitions/presenters"}
-  },
-  "definitions": 
-  {
-    "proposal": {
-      "id": "http://jsonschema.net/proposal",
-      "type": "object",
-      "title": "Conference Talk Proposal",
-      "description": "This object encapsulates a conference talk proposal.",
-      "name": "proposal",
-      "properties": {
-        "title": {
-          "id": "http://jsonschema.net/proposal/title",
-          "type": "string",
-          "title": "The title of the proposed talk",
-          "description": "An explanation about the puropose of this instance described by this schema.",
-          "name": "title"
-        },
-        "brief-description": {
-          "id": "http://jsonschema.net/proposal/brief-description",
-          "type": "string",
-          "title": "Brief description",
-          "description": "A brief description of the conference talk proposal.",
-          "name": "brief-description"
-        },
-        "full-description": {
-          "id": "http://jsonschema.net/proposal/full-description",
-          "type": "string",
-          "title": "Full description",
-          "description": "The full description of the conference talk proposal.",
-          "name": "full-description"
-        },
-        "keywords": {
-          "id": "http://jsonschema.net/proposal/keywords",
-          "type": "array",
-          "title": "Keywords",
-          "description": "Keywords matching the topic of your conference talk proposal.",
-          "name": "keywords",
-          "items": [
-            {
-              "type": "string",
-              "title": "Keyword",
-              "description": "A conference talk proposal keyword."
-            }
-          ]
-        },
-        "length": {
-          "id": "http://jsonschema.net/proposal/length",
-          "type": "object",
-          "title": "Length schema.",
-          "description": "An explanation about the puropose of this instance described by this schema.",
-          "name": "length",
-          "properties": {
-            "preferred": {
-              "id": "http://jsonschema.net/proposal/length/preferred",
-              "type": "integer",
-              "title": "Preferred duration",
-              "description": "The preferred duration (in minutes) of the presentation.",
-              "name": "preferred"
-            },
-            "min": {
-              "id": "http://jsonschema.net/proposal/length/min",
-              "type": "integer",
-              "title": "Minimum duration",
-              "description": "The minimum duration (in minutes) of the presentation.",
-              "name": "min"
-            },
-            "max": {
-              "id": "http://jsonschema.net/proposal/length/max",
-              "type": "integer",
-              "title": "Maximum duration",
-              "description": "The minimum duration (in minutes) of the presentation.",
-              "name": "max"
-            }
-          }
-        },
-        "presenters": {"$ref": "#/definitions/presenters"},
-        "links": { "$ref": "#/definitions/links" },
-
-        "past-presentations": {
-          "id": "http://jsonschema.net/proposal/past-presentations",
-          "type": "array",
-          "title": "Past presentations",
-          "description": "Past presentations of the proposed talk.",
-          "name": "past-presentations",
-          "items": {
-            "type": "object",
-            "title": "Past presentation",
-            "description": "",
-            "properties": {
-              "presentation-date": {
-                "type": "string",
-                "title": "Presentation date",
-                "description": "The date the presentation was presented.",
-                "name": "presentation-date"
-              },
-              "conference": {
-                "type": "string",
-                "title": "Conference name",
-                "description": "The name of the conference this presentation was presented.",
-                "name": "conference"
-              },
-              "links": { "$ref": "#/definitions/links" }
-            }
-          }
-        }
-      },
-      "required": [
-        "title",
-        "brief-description",
-        "full-description",
-        "keywords",
-        "length",
-        "presenters",
-        "past-presentations"
-      ]
-    },
-    "presenters": {
-      "id": "http://jsonschema.net/proposal/presenters",
-      "type": "array",
-      "title": "Presenters",
-      "description": "The presenters of the proposed conference talk.",
-      "name": "presenters",
-      "items": [
-        {
-          "type": "object",
-          "title": "Presenter",
-          "description": "A presenter of the proposed conference talk.",
-          "properties": {
-            "name": {
-              "type": "string",
-              "title": "Presenter Name",
-              "description": "The full name of the presenter.",
-              "name": "name"
-            },
-            "email": {
-              "type": "string",
-              "title": "Presenter Email address",
-              "description": "The email address of the presenter.",
-              "name": "email"
-            },
-            "links": { "$ref": "#/definitions/links" }
-          }
-        }
-      ]
-    },
+  "definitions": {
     "links": {
-      "id": "http://jsonschema.net/links",
       "type": "array",
       "title": "Links",
       "description": "A collection of links related to the parent topic.",
@@ -168,11 +20,13 @@
             "type": "string",
             "title": "Link relation",
             "description": "The name of the link relation.",
-            "name": "rel"
+            "name": "rel",
+            "enum": ["video-recording", "slides", "presenter", "presentations", "conference"]
           },
           "href": {
             "type": "string",
             "title": "Link URL",
+            
             "description": "The actual link, as an URL.",
             "name": "href"
           }
@@ -182,6 +36,314 @@
           "href"
         ]
       }
+    },
+    "presenter": {
+      "type": "object",
+      "title": "Presenter",
+      "description": "A presenter of the proposed conference talk.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "Presenter Name",
+          "description": "The full name of the presenter.",
+          "name": "name"
+        },
+        "email": {
+          "type": "string",
+          "title": "Presenter Email address",
+          "description": "The email address of the presenter.",
+          "name": "email"
+        },
+        "airport": {
+          "type": "string",
+          "title": "Presenter Home Airport",
+          "description": "The home airport of the presenter, for estimating travel expenses.",
+          "name": "airport"
+        },
+        "dietary-requirement": {
+          "type": "string",
+          "title": "Dietary Requirement",
+          "description": "The Presenteres dietary requirements.",
+          "name": "dietary-requirement"
+        },
+        "t-shirt-preference": {
+          "type": "string",
+          "title": "T-Shirt Preference",
+          "description": "The T-Shirt size the Presenter prefers.",
+          "name": "t-shirt-preference"
+        },
+        "links": {
+          "$ref": "#/definitions/links"
+        }
+      }
+    },
+    "presenters": {
+      "type": "array",
+      "title": "Presenters",
+      "description": "The presenters of the proposed conference talk.",
+      "name": "presenters",
+      "items": {
+        "$ref": "#/definitions/presenter"
+      }
+    },
+    "presentation": {
+      "type": "object",
+      "title": "Presentation",
+      "description": "Data on a specific presentation.",
+      "properties": {
+        "presentation-date": {
+          "type": "string",
+          "title": "Presentation date",
+          "description": "The date the presentation was presented.",
+          "name": "presentation-date"
+        },
+        "conference": {
+          "type": "string",
+          "title": "Conference name",
+          "description": "The name of the conference this presentation was presented at.",
+          "name": "conference"
+        },
+        "location": {
+          "type": "string",
+          "title": "Location",
+          "description": "The location of the conference this presentation was presented at.",
+          "name": "location"
+        },
+        "attendee-quantity": {
+          "type": "integer",
+          "title": "Attendee Quantity",
+          "description": "The estimated attendee quantity.",
+          "name": "location"
+        }
+      }
+    },
+    "presentations": {
+      "type": "array",
+      "title": "Presentations",
+      "description": "A collection of presentations.",
+      "name": "presentations",
+      "items": {
+        "$ref": "#/definitions/presentation"
+      }
+    },
+    "proposal": {
+      "type": "object",
+      "title": "Conference Talk Proposal",
+      "description": "This object encapsulates a conference talk proposal.",
+      "name": "proposal",
+      "properties": {
+        "title": {
+          "type": "string",
+          "title": "The title of the proposed talk",
+          "description": "An explanation about the puropose of this instance described by this schema.",
+          "name": "title"
+        },
+        "brief-description": {
+          "type": "string",
+          "title": "Brief description",
+          "description": "A brief description of the conference talk proposal.",
+          "name": "brief-description"
+        },
+        "full-description": {
+          "type": "string",
+          "title": "Full description",
+          "description": "The full description of the conference talk proposal.",
+          "name": "full-description"
+        },
+        "selection-notes": {
+          "type": "string",
+          "title": "Selection notes",
+          "description": "Additional information, not intended for the public.",
+          "name": "selection-notes"
+        },
+        "tags": {
+          "type": "array",
+          "title": "Tags",
+          "description": "Keywords matching the topic of your conference talk proposal.",
+          "name": "tags",
+          "items": {
+            "type": "string",
+            "title": "Keyword",
+            "description": "A conference talk proposal keyword/tag."
+          }
+        },
+        "target-audience": {
+          "type": "integer",
+          "title": "Target audience",
+          "description": "Intended target audience, ranging from 1 (novice) to 5 (expert).",
+          "name": "target-audience"
+        },
+        "length": {
+          "type": "object",
+          "title": "Presentation length",
+          "description": "Possible durations of the proposed conference talk.",
+          "name": "length",
+          "properties": {
+            "preferred": {
+              "type": "integer",
+              "title": "Preferred duration",
+              "description": "The preferred duration (in minutes) of the presentation.",
+              "name": "preferred"
+            },
+            "min": {
+              "type": "integer",
+              "title": "Minimum duration",
+              "description": "The minimum duration (in minutes) of the presentation.",
+              "name": "min"
+            },
+            "max": {
+              "type": "integer",
+              "title": "Maximum duration",
+              "description": "The minimum duration (in minutes) of the presentation.",
+              "name": "max"
+            }
+          }
+        },
+        "languages": {
+          "type": "array",
+          "title": "Languages",
+          "description": "Languages this presentation can be held in (following RFC5646).",
+          "name": "languages",
+          "items": {
+            "type": "string"
+          }
+        },
+        "talk-style": {
+          "type": "string",
+          "title": "Talk style",
+          "description": "Classification of the talk style, e.g. workshop, talk.",
+          "name": "talk-style"
+        },
+        "presenters": {
+          "$ref": "#/definitions/presenters"
+        },
+        "links": {
+          "$ref": "#/definitions/links"
+        },
+        "past-presentations": {
+          "$ref": "#/definitions/presentations"
+        },
+        "special-requirements": {
+          "type": "string",
+          "title": "Special Requirements",
+          "description": "Any special requirements needed to hold the presentation.",
+          "name": "special-requirements"
+        }
+      },
+      "required": [
+        "title",
+        "brief-description",
+        "length",
+        "presenters"
+      ]
+    },
+    "proposals": {
+      "type": "array",
+      "title": "Conference Talk Proposals",
+      "description": "A collection of conference talk proposals",
+      "name": "proposals",
+      "items": {
+        "$ref": "#/definitions/proposal"
+      }
+    },
+    "conference": {
+      "type": "object",
+      "title": "Conference",
+      "description": "Conference Data",
+      "properties": {
+        "talk-style-domain": {
+          "type": "array",
+          "name": "talk-style-domain",
+          "title": "Talk Style Domain",
+          "description": "The talk style domain used for this conference.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tags-domain": {
+          "type": "array",
+          "title": "Tags Domain",
+          "description": "The tags which may be used for this conference.",
+          "name": "tags-domain",
+          "items": {
+            "type": "string"
+          }
+        },
+        "languages-domain": {
+          "type": "array",
+          "title": "Languages Domain",
+          "descriptions": "Valid languages a talk can be held in for this conference.",
+          "name": "languages-domain",
+          "items": {
+            "type": "string"
+          }
+        },
+        "brief-description-max-size": {
+          "type": "integer",
+          "title": "Max chars for Brief Description",
+          "description": "The maximum number of characters allowed for the brief description",
+          "name": "brief-description-max-size"
+        },
+        "full-description-max-size": {
+          "type": "integer",
+          "title": "Max chars for Ful. Description",
+          "description": "The maximum number of characters allowed for the full description",
+          "name": "full-description-max-size"
+        },
+        "t-shirt-domain": {
+          "type": "array",
+          "title": "T-Shirt Domain",
+          "description": "The T-Shirt sizes this conference offers.",
+          "name": "t-shirt-domain",
+          "items": {
+            "type": "string"
+          }
+        },
+        "dietary-requirement-domain": {
+          "type": "array",
+          "title": "Dietary Requirements Domain",
+          "description": "The supported dietary requirements for this conference.",
+          "name": "dietary-requirement-domain",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "conferences": {
+      "type": "array",
+      "title": "Conferences",
+      "description": "A collection of conferences",
+      "name": "conferences",
+      "items": {
+        "$ref": "#/definitions/conference"
+      }
+    }
+  },
+  "properties": {
+    "proposal": {
+      "$ref": "#/definitions/proposal"
+    },
+    "proposals": {
+      "$ref": "#/definitions/proposals"
+    },
+    "presenter": {
+      "$ref": "#/definitions/presenter"
+    },
+    "presenters": {
+      "$ref": "#/definitions/presenters"
+    },
+    "presentations": {
+      "$ref": "#/definitions/presentations"
+    },
+    "presentation": {
+      "$ref": "#/definitions/presentation"
+    },
+    "conferences": {
+      "$ref": "#/definitions/conferences"
+    },
+    "conference": {
+      "$ref": "#/definitions/conference"
     }
   }
 }
