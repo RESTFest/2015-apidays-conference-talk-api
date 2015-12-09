@@ -1,0 +1,22 @@
+{
+  "@context": "https://rawgit.com/RESTFest/2015-apidays-conference-talk-api/tree/json-ld/translators/json-ld/context.jsonld",
+    "@id": "https://graph.hackers4peace.net/b8b6212a-59f7-4b2b-93ea-7193d271a74c#id",
+    "@type": "SessionProposal",
+    "conference": {
+      "name": "APIdays 2015 Paris"
+    },
+    "title": "API standrardisation work in W3C groups",
+    "presenter": {
+      "@id": "https://idp.wwelves.org/ef093385-8906-4c78-9a69-9217c76013a8#id",
+      "name": "elf Pavlik",
+      "t-shirt-preference": "M",
+      "dietary-requirement": [ "vegan", "vegetarian" ]
+    },
+    "brief-description": "",
+    "keywords": [],
+    "length": {
+      "preferred": 30,
+      "min": 20,
+      "max": 90
+    }
+}
