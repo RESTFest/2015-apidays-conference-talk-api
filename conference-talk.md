@@ -306,10 +306,10 @@ email = <addr-spec see {{!RFC2822}}, Section 3.4.1>
 The home airport of the presenter. This information is used to approximate travel costs for speakers and aid in the selection process. This is a string value.
 
 ### dietary-requirement
-An identifier selected from the list of available values as defined by the conference. This is a string value.
+An identifier that is related to a `presenter` selected from the list of available values as defined by the conference. This is a string value.
 
 ### t-shirt-preference
-An identifier selected from the list of available values as defined by the conference. This is a string value.
+An identifier that is related to a `presenter` selected from the list of available values as defined by the conference. This is a string value.
 
 ## presentation
 The `presentation` structure is a historical record of a talk described by a proposal structure that has been presented at a conference.
