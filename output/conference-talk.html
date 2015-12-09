@@ -400,8 +400,7 @@
 <link href="#rfc.section.4.2.6" rel="Chapter" title="4.2.6 target-audience"/>
 <link href="#rfc.section.4.2.7" rel="Chapter" title="4.2.7 length"/>
 <link href="#rfc.section.4.2.8" rel="Chapter" title="4.2.8 languages"/>
-<link href="#rfc.section.4.2.9" rel="Chapter" title="4.2.9 co-presenters"/>
-<link href="#rfc.section.4.2.10" rel="Chapter" title="4.2.10 talk-style"/>
+<link href="#rfc.section.4.2.9" rel="Chapter" title="4.2.9 talk-style"/>
 <link href="#rfc.section.4.3" rel="Chapter" title="4.3 presenter"/>
 <link href="#rfc.section.4.3.1" rel="Chapter" title="4.3.1 name"/>
 <link href="#rfc.section.4.3.2" rel="Chapter" title="4.3.2 email"/>
@@ -444,7 +443,7 @@
 
   <meta name="dct.creator" content="Miller, D." />
   <meta name="dct.identifier" content="urn:ietf:id:draft-miller-conference-talk-01" />
-  <meta name="dct.issued" scheme="ISO8601" content="2015-11-19" />
+  <meta name="dct.issued" scheme="ISO8601" content="2015-12-9" />
   <meta name="dct.abstract" content="This draft document is a media type specification for describing a conference talk proposals, presenters and presentations.  This format aims to standardize the format of information shared between software components used by conference organizers, speakers and attendees. It is intended to reduce the effort required for speakers to submit session proposals and for conference organizers to process those submissions." />
   <meta name="description" content="This draft document is a media type specification for describing a conference talk proposals, presenters and presentations.  This format aims to standardize the format of information shared between software components used by conference organizers, speakers and attendees. It is intended to reduce the effort required for speakers to submit session proposals and for conference organizers to process those submissions." />
 
@@ -465,10 +464,10 @@
 </tr>
 <tr>
   <td class="left">Intended status: Informational</td>
-  <td class="right">November 19, 2015</td>
+  <td class="right">December 9, 2015</td>
 </tr>
 <tr>
-  <td class="left">Expires: May 22, 2016</td>
+  <td class="left">Expires: June 11, 2016</td>
   <td class="right"></td>
 </tr>
 
@@ -493,7 +492,7 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on May 22, 2016.</p>
+<p>This Internet-Draft will expire on June 11, 2016.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
@@ -531,8 +530,7 @@
 <li>4.2.6.   <a href="#rfc.section.4.2.6">target-audience</a></li>
 <li>4.2.7.   <a href="#rfc.section.4.2.7">length</a></li>
 <li>4.2.8.   <a href="#rfc.section.4.2.8">languages</a></li>
-<li>4.2.9.   <a href="#rfc.section.4.2.9">co-presenters</a></li>
-<li>4.2.10.   <a href="#rfc.section.4.2.10">talk-style</a></li>
+<li>4.2.9.   <a href="#rfc.section.4.2.9">talk-style</a></li>
 </ul><li>4.3.   <a href="#rfc.section.4.3">presenter</a></li>
 <ul><li>4.3.1.   <a href="#rfc.section.4.3.1">name</a></li>
 <li>4.3.2.   <a href="#rfc.section.4.3.2">email</a></li>
@@ -623,30 +621,32 @@
 </pre>
 <p id="rfc.section.2.p.3">A more complete proposal might look like,</p>
 <pre>
-  { "proposal" : {
-    "title" : "An Introduction To Media Type Design",
-    "brief-description" : "Blah Blah Blah",
-    "full-description" : "Even longer blah Blah Blah",
-    "keywords" : ["javascript", "java", "http"],
-    "length" : {
-      "preferred" : 60,
-      "min" : 45,
-      "max" : 90
-    }
-    "presenter" : {
-      "name" : "Darrel Miller",
-      "email" : "darrel@example.com"
-      }
+{
+  "proposal": {
+    "title": "An Introduction To Media Type Design",
+    "brief-description": "Blah Blah Blah",
+    "full-description": "Even longer blah Blah Blah",
+    "keywords": ["javascript", "java", "http"],
+    "length": {
+      "preferred": 60,
+      "min": 45,
+      "max": 90
     },
-    "co-presenters" : [{
+    "presenters": [{
+      "name": "Darrel Miller",
+      "email": "darrel@example.com"
+    },
+    {
       "name" : "Bob Brown",
-      "email" : "bob@example.com"
-      }],
-    "past-presentations" : [{
-          "presentation-date" : "20150911",
-          "conference" : "UberConf"
+      "email" : "bob@yahoo.com"
       }]
-  }
+  },
+
+  "past-presentations": [{
+    "presentation-date": "20150911",
+    "conference": "UberConf"
+  }]
+}
 
 </pre>
 <p id="rfc.section.2.p.4">This specification is intended primarily to describe a message format that only exists to transfer information between two independent systems. It is not intended as a persistence format or a content creation format. JSON is ideal for this purpose. However, it should be fairly straightforward to apply the structure and semantics defined in this document to other formats.</p>
@@ -668,7 +668,7 @@
 <p/>
 
 <ul>
-  <li>A <samp>proposal</samp> structure can contain a <samp>presenter</samp> structure to indicate the primary presenter.</li>
+  <li>A <samp>proposal</samp> structure can contain a <samp>presenter</samp> structure or <samp>presenters</samp> array to indicate the  presenter(s).</li>
   <li>A <samp>presentation</samp> structure can contain a <samp>presenter</samp> structure indicating who was the primary presenter of a past presentation.</li>
   <li>A <samp>presentation</samp> structure can contain a <samp>proposal</samp> structure indicating the proposal that was submitted and selected for the presentation.</li>
   <li>A <samp>presentation</samp> structure can contain a <samp>conference</samp> structure indicating the conference at which the presentation was presented.</li>
@@ -681,7 +681,7 @@
   <li><samp>presenter</samp> can have a list attribute called <samp>proposals</samp> containing <samp>proposal</samp> structures.</li>
   <li><samp>presenter</samp> can have a list attribute called <samp>presentations</samp> containing <samp>presentation</samp> structures.</li>
   <li><samp>proposal</samp> can have a list attribute called <samp>past-presentations</samp> containing <samp>presentation</samp> structures.</li>
-  <li><samp>proposal</samp> can have a list attribute called <samp>co-presenters</samp> containing <samp>presenter</samp> structures.</li>
+  <li><samp>proposal</samp> can have a list attribute called <samp>presenters</samp> containing <samp>presenter</samp> structures.</li>
 </ul>
 <h1 id="rfc.section.3.4"><a href="#rfc.section.3.4">3.4.</a> <a href="#links" id="links">Links</a></h1>
 <p id="rfc.section.3.4.p.1">All structures defined in this vocabulary can contain a property called  <samp>links</samp>.  This property contains an array of <samp>link</samp> objects.  Links are a way to break apart pieces of the document for the purposes of reuse and controlling granularity.  Through the use of relative URIs and fragments we can use links with the document to reduce redundancy.</p>
@@ -773,10 +773,8 @@ length : {
 <pre>
 language : ["en","fr"]
 </pre>
-<h1 id="rfc.section.4.2.9"><a href="#rfc.section.4.2.9">4.2.9.</a> <a href="#co-presenters" id="co-presenters">co-presenters</a></h1>
-<p id="rfc.section.4.2.9.p.1">Some presentations are done with multiple presenters.  As this is more the exception than the rule, it is easier to consider a proposal as having a single primary presenter and then treat other presenters as <samp>co-presenters</samp>.  This attribute is an array of <samp>presenter</samp> structures.</p>
-<h1 id="rfc.section.4.2.10"><a href="#rfc.section.4.2.10">4.2.10.</a> <a href="#talk-style" id="talk-style">talk-style</a></h1>
-<p id="rfc.section.4.2.10.p.1">Style is an identifier that classifies the type of talk being submitted.  This value is a string identifier from a set of valid values as defined by the conference being submitted to.</p>
+<h1 id="rfc.section.4.2.9"><a href="#rfc.section.4.2.9">4.2.9.</a> <a href="#talk-style" id="talk-style">talk-style</a></h1>
+<p id="rfc.section.4.2.9.p.1">Style is an identifier that classifies the type of talk being submitted.  This value is a string identifier from a set of valid values as defined by the conference being submitted to.</p>
 <pre>
 talk-style : "workshop"
 </pre>

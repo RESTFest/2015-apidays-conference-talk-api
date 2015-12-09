@@ -94,30 +94,32 @@ A more complete proposal might look like,
 
 ~~~~~~~~~~
 
-  { "proposal" : {
-    "title" : "An Introduction To Media Type Design",
-    "brief-description" : "Blah Blah Blah",
-    "full-description" : "Even longer blah Blah Blah",
-    "keywords" : ["javascript", "java", "http"],
-    "length" : {
-      "preferred" : 60,
-      "min" : 45,
-      "max" : 90
-    }
-    "presenter" : {
-      "name" : "Darrel Miller",
-      "email" : "darrel@example.com"
-      }
+{
+  "proposal": {
+    "title": "An Introduction To Media Type Design",
+    "brief-description": "Blah Blah Blah",
+    "full-description": "Even longer blah Blah Blah",
+    "keywords": ["javascript", "java", "http"],
+    "length": {
+      "preferred": 60,
+      "min": 45,
+      "max": 90
     },
-    "co-presenters" : [{
+    "presenters": [{
+      "name": "Darrel Miller",
+      "email": "darrel@example.com"
+    },
+    {
       "name" : "Bob Brown",
-      "email" : "bob@example.com"
-      }],
-    "past-presentations" : [{
-          "presentation-date" : "20150911",
-          "conference" : "UberConf"
+      "email" : "bob@yahoo.com"
       }]
-  }
+  },
+
+  "past-presentations": [{
+    "presentation-date": "20150911",
+    "conference": "UberConf"
+  }]
+}
 
 ~~~~~~~~~~
 
@@ -144,7 +146,7 @@ There is no fixed structure to the root object. It can contain any number of pro
 ## 1:1 Relationships
 Certain structures can contain other structures in a 1:1 relationship. E.g.
 
-- A `proposal` structure can contain a `presenter` structure to indicate the primary presenter.  
+- A `proposal` structure can contain a `presenter` structure or `presenters` array to indicate the  presenter(s).  
 - A `presentation` structure can contain a `presenter` structure indicating who was the primary presenter of a past presentation.
 - A `presentation` structure can contain a `proposal` structure indicating the proposal that was submitted and selected for the presentation.
 - A `presentation` structure can contain a `conference` structure indicating the conference at which the presentation was presented.
@@ -155,7 +157,7 @@ Lists of structures can be contained as an attribute of other structures to indi
 - `presenter` can have a list attribute called `proposals` containing `proposal` structures.
 - `presenter` can have a list attribute called `presentations` containing `presentation` structures.
 - `proposal` can have a list attribute called `past-presentations` containing `presentation` structures.
-- `proposal` can have a list attribute called `co-presenters` containing `presenter` structures.
+- `proposal` can have a list attribute called `presenters` containing `presenter` structures.
 
 ## Links
 All structures defined in this vocabulary can contain a property called  `links`.  This property contains an array of `link` objects.  Links are a way to break apart pieces of the document for the purposes of reuse and controlling granularity.  Through the use of relative URIs and fragments we can use links with the document to reduce redundancy.
@@ -280,9 +282,6 @@ Some conferences are multi-lingual and sometimes speakers are able to perform ta
 language : ["en","fr"]
 ~~~~~~~
 
-### co-presenters
-Some presentations are done with multiple presenters.  As this is more the exception than the rule, it is easier to consider a proposal as having a single primary presenter and then treat other presenters as `co-presenters`.  This attribute is an array of `presenter` structures.
-
 ### talk-style
 Style is an identifier that classifies the type of talk being submitted.  This value is a string identifier from a set of valid values as defined by the conference being submitted to.
 
@@ -307,10 +306,10 @@ email = <addr-spec see {{!RFC2822}}, Section 3.4.1>
 The home airport of the presenter. This information is used to approximate travel costs for speakers and aid in the selection process. This is a string value.
 
 ### dietary-requirement
-An identifier selected from the list of available values as defined by the conference. This is a string value.
+An identifier that is related to a `presenter` selected from the list of available values as defined by the conference. This is a string value.
 
 ### t-shirt-preference
-An identifier selected from the list of available values as defined by the conference. This is a string value.
+An identifier that is related to a `presenter` selected from the list of available values as defined by the conference. This is a string value.
 
 ## presentation
 The `presentation` structure is a historical record of a talk described by a proposal structure that has been presented at a conference.
