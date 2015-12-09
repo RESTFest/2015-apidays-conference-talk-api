@@ -81,12 +81,13 @@ A minimal submission might look like this:
 ~~~~~~~~~~
 
     { "proposal" : {
-     "title" : "An Introduction To Media Type Design",
-     "brief-description" : "Blah Blah Blah",
-     "presenter" : {
-       "name" : "Darrel Miller",
+      "title" : "An Introduction To Media Type Design",
+      "brief-description" : "Blah Blah Blah",
+      "presenter" : {
+        "name" : "Darrel Miller",
        }
-      }}
+      }
+    }
 
 ~~~~~~~~~~
 
@@ -182,24 +183,26 @@ Link relations values defined in the `conference-talk` conference talk document 
 The href property can resolve to a relative URI and use relative fragment identifiers to point to content within the current document. Fragment identifiers follow the scheme defined by the JSON-Pointer specification. This prevents the need to duplicate content within a document.
 
 For example, the sample below has an array of proposals, and each one points to a presenter structure and conference structure.
+
 ~~~~~~~~~~
 
-    { "proposals" : [{
-     "title" : "An Introduction To Media Type Design",
-     "brief-description" : "Blah Blah Blah",
-    "links" [
-      { "rel" : ".presenter", "href" : "#presenter"},
-      { "rel" : ".conference", "href" : "#conference"}
-    ]
-    },
-    {
-    "title" : "Crafting Evolvable Representations",
-    "brief-description" : "Double blah",
-    "links" [
-      { "rel" : ".presenter", "href" : "#presenter"},
-      { "rel" : ".conference", "href" : "#conference"}
-    ]
-    },
+    { "proposals" : [
+        {
+             "title" : "An Introduction To Media Type Design",
+             "brief-description" : "Blah Blah Blah",
+            "links" [
+              { "rel" : ".presenter", "href" : "#presenter"},
+              { "rel" : ".conference", "href" : "#conference"}
+            ]
+        },
+        {
+            "title" : "Crafting Evolvable Representations",
+            "brief-description" : "Double blah",
+            "links" [
+              { "rel" : ".presenter", "href" : "#presenter"},
+              { "rel" : ".conference", "href" : "#conference"}
+            ]
+        },
     ],
   "presenter" : {
       "name" : "Darrel Miller",
@@ -274,7 +277,6 @@ length : {
 }
 ~~~~~~~
 
-
 ### languages
 Some conferences are multi-lingual and sometimes speakers are able to perform talks in multiple languages.  The language property contains an array of language codes as described in {{!RFC5646}}.
 
@@ -333,25 +335,29 @@ This field is a number that provides an approximate quantity of people who atten
 The `conference` structure is used to describe its purpose, its location, the timeline of events and the domains of valid values for properties like, `tags`, `talk-style` and `languages`.  It also can contain limits such as maximum lengths for `brief-description`, and `full-description`.   
 
 ### talk-style-domain
-TK
+A set of valid values for the `talk-style` property. This domain of values is often defined within the `conference` structure.
+
+~~~~~~~
+talk-style-domain : ["workshop", "session","lightning-talk"]
+~~~~~~~
 
 ### tags-domain
-TK
+A set of valid values for the `tags` property.  The domain of values is often defined within the `conference` structure.
 
 ### languages-domain
-TK
+A set of valid values for the `languages` property.  The domain of values is often defined within the `conference` structure.
 
 ### brief-description-max-size
-TK
+A numeric value usually defined within the `conference` structure to define the maximum length in characters of the `brief-description`.
 
 ### full-description-max-size
-TK
+A numeric value usually defined within the `conference` structure to define the maximum length in characters of the `full-description`.
 
 ### t-shirt-domain
-TK
+A set of valid values for the `t-shirt` property.  The domain of values is often defined within the `conference` structure.
 
 ### dietary-requirement-domain
-TK
+A set of valid values for the `dietary-requirement` property.  The domain of values is often defined within the `conference` structure.
 
 # Link Relations
 
@@ -370,21 +376,22 @@ This is a URL that points to a list of presentations.
 ### conference
 This is a URL that points to information about a conference.
 
-
 # IANA Considerations {#iana}
-
+TK
 
 ## Registrations
-
+TK
 
 # Security Considerations
-
+TK
 
 # Appendix 1 : Mapping to HTML
 
 # Appendix 2 : Mapping to ALPS
 
-# Appendix 2 : Mapping to SIREN
+# Appendix 3 : Mapping to SIREN
+
+# Appendix 4 : Mapping to JSON-LD
 
 --- back
 
