@@ -1,0 +1,902 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head profile="http://www.w3.org/2006/03/hcard http://dublincore.org/documents/2008/08/04/dc-html/">
+  <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+
+  <title>Conference Talk Media Type</title>
+
+  <style type="text/css" title="Xml2Rfc (sans serif)">
+  /*<![CDATA[*/
+	  a {
+	  text-decoration: none;
+	  }
+      /* info code from SantaKlauss at http://www.madaboutstyle.com/tooltip2.html */
+      a.info {
+          /* This is the key. */
+          position: relative;
+          z-index: 24;
+          text-decoration: none;
+      }
+      a.info:hover {
+          z-index: 25;
+          color: #FFF; background-color: #900;
+      }
+      a.info span { display: none; }
+      a.info:hover span.info {
+          /* The span will display just on :hover state. */
+          display: block;
+          position: absolute;
+          font-size: smaller;
+          top: 2em; left: -5em; width: 15em;
+          padding: 2px; border: 1px solid #333;
+          color: #900; background-color: #EEE;
+          text-align: left;
+      }
+	  a.smpl {
+	  color: black;
+	  }
+	  a:hover {
+	  text-decoration: underline;
+	  }
+	  a:active {
+	  text-decoration: underline;
+	  }
+	  address {
+	  margin-top: 1em;
+	  margin-left: 2em;
+	  font-style: normal;
+	  }
+	  body {
+	  color: black;
+	  font-family: verdana, helvetica, arial, sans-serif;
+	  font-size: 10pt;
+	  max-width: 55em;
+	  
+	  }
+	  cite {
+	  font-style: normal;
+	  }
+	  dd {
+	  margin-right: 2em;
+	  }
+	  dl {
+	  margin-left: 2em;
+	  }
+	
+	  ul.empty {
+	  list-style-type: none;
+	  }
+	  ul.empty li {
+	  margin-top: .5em;
+	  }
+	  dl p {
+	  margin-left: 0em;
+	  }
+	  dt {
+	  margin-top: .5em;
+	  }
+	  h1 {
+	  font-size: 14pt;
+	  line-height: 21pt;
+	  page-break-after: avoid;
+	  }
+	  h1.np {
+	  page-break-before: always;
+	  }
+	  h1 a {
+	  color: #333333;
+	  }
+	  h2 {
+	  font-size: 12pt;
+	  line-height: 15pt;
+	  page-break-after: avoid;
+	  }
+	  h3, h4, h5, h6 {
+	  font-size: 10pt;
+	  page-break-after: avoid;
+	  }
+	  h2 a, h3 a, h4 a, h5 a, h6 a {
+	  color: black;
+	  }
+	  img {
+	  margin-left: 3em;
+	  }
+	  li {
+	  margin-left: 2em;
+	  margin-right: 2em;
+	  }
+	  ol {
+	  margin-left: 2em;
+	  margin-right: 2em;
+	  }
+	  ol p {
+	  margin-left: 0em;
+	  }
+	  p {
+	  margin-left: 2em;
+	  margin-right: 2em;
+	  }
+	  pre {
+	  margin-left: 3em;
+	  background-color: lightyellow;
+	  padding: .25em;
+	  }
+	  pre.text2 {
+	  border-style: dotted;
+	  border-width: 1px;
+	  background-color: #f0f0f0;
+	  width: 69em;
+	  }
+	  pre.inline {
+	  background-color: white;
+	  padding: 0em;
+	  }
+	  pre.text {
+	  border-style: dotted;
+	  border-width: 1px;
+	  background-color: #f8f8f8;
+	  width: 69em;
+	  }
+	  pre.drawing {
+	  border-style: solid;
+	  border-width: 1px;
+	  background-color: #f8f8f8;
+	  padding: 2em;
+	  }
+	  table {
+	  margin-left: 2em;
+	  }
+	  table.tt {
+	  vertical-align: top;
+	  }
+	  table.full {
+	  border-style: outset;
+	  border-width: 1px;
+	  }
+	  table.headers {
+	  border-style: outset;
+	  border-width: 1px;
+	  }
+	  table.tt td {
+	  vertical-align: top;
+	  }
+	  table.full td {
+	  border-style: inset;
+	  border-width: 1px;
+	  }
+	  table.tt th {
+	  vertical-align: top;
+	  }
+	  table.full th {
+	  border-style: inset;
+	  border-width: 1px;
+	  }
+	  table.headers th {
+	  border-style: none none inset none;
+	  border-width: 1px;
+	  }
+	  table.left {
+	  margin-right: auto;
+	  }
+	  table.right {
+	  margin-left: auto;
+	  }
+	  table.center {
+	  margin-left: auto;
+	  margin-right: auto;
+	  }
+	  caption {
+	  caption-side: bottom;
+	  font-weight: bold;
+	  font-size: 9pt;
+	  margin-top: .5em;
+	  }
+	
+	  table.header {
+	  border-spacing: 1px;
+	  width: 95%;
+	  font-size: 10pt;
+	  color: white;
+	  }
+	  td.top {
+	  vertical-align: top;
+	  }
+	  td.topnowrap {
+	  vertical-align: top;
+	  white-space: nowrap; 
+	  }
+	  table.header td {
+	  background-color: gray;
+	  width: 50%;
+	  }
+	  table.header a {
+	  color: white;
+	  }
+	  td.reference {
+	  vertical-align: top;
+	  white-space: nowrap;
+	  padding-right: 1em;
+	  }
+	  thead {
+	  display:table-header-group;
+	  }
+	  ul.toc, ul.toc ul {
+	  list-style: none;
+	  margin-left: 1.5em;
+	  margin-right: 0em;
+	  padding-left: 0em;
+	  }
+	  ul.toc li {
+	  line-height: 150%;
+	  font-weight: bold;
+	  font-size: 10pt;
+	  margin-left: 0em;
+	  margin-right: 0em;
+	  }
+	  ul.toc li li {
+	  line-height: normal;
+	  font-weight: normal;
+	  font-size: 9pt;
+	  margin-left: 0em;
+	  margin-right: 0em;
+	  }
+	  li.excluded {
+	  font-size: 0pt;
+	  }
+	  ul p {
+	  margin-left: 0em;
+	  }
+	
+	  .comment {
+	  background-color: yellow;
+	  }
+	  .center {
+	  text-align: center;
+	  }
+	  .error {
+	  color: red;
+	  font-style: italic;
+	  font-weight: bold;
+	  }
+	  .figure {
+	  font-weight: bold;
+	  text-align: center;
+	  font-size: 9pt;
+	  }
+	  .filename {
+	  color: #333333;
+	  font-weight: bold;
+	  font-size: 12pt;
+	  line-height: 21pt;
+	  text-align: center;
+	  }
+	  .fn {
+	  font-weight: bold;
+	  }
+	  .hidden {
+	  display: none;
+	  }
+	  .left {
+	  text-align: left;
+	  }
+	  .right {
+	  text-align: right;
+	  }
+	  .title {
+	  color: #990000;
+	  font-size: 18pt;
+	  line-height: 18pt;
+	  font-weight: bold;
+	  text-align: center;
+	  margin-top: 36pt;
+	  }
+	  .vcardline {
+	  display: block;
+	  }
+	  .warning {
+	  font-size: 14pt;
+	  background-color: yellow;
+	  }
+	
+	
+	  @media print {
+	  .noprint {
+		display: none;
+	  }
+	
+	  a {
+		color: black;
+		text-decoration: none;
+	  }
+	
+	  table.header {
+		width: 90%;
+	  }
+	
+	  td.header {
+		width: 50%;
+		color: black;
+		background-color: white;
+		vertical-align: top;
+		font-size: 12pt;
+	  }
+	
+	  ul.toc a::after {
+		content: leader('.') target-counter(attr(href), page);
+	  }
+	
+	  ul.ind li li a {
+		content: target-counter(attr(href), page);
+	  }
+	
+	  .print2col {
+		column-count: 2;
+		-moz-column-count: 2;
+		column-fill: auto;
+	  }
+	  }
+	
+	  @page {
+	  @top-left {
+		   content: "Internet-Draft"; 
+	  } 
+	  @top-right {
+		   content: "December 2010"; 
+	  } 
+	  @top-center {
+		   content: "Abbreviated Title";
+	  } 
+	  @bottom-left {
+		   content: "Doe"; 
+	  } 
+	  @bottom-center {
+		   content: "Expires June 2011"; 
+	  } 
+	  @bottom-right {
+		   content: "[Page " counter(page) "]"; 
+	  } 
+	  }
+	
+	  @page:first { 
+		@top-left {
+		  content: normal;
+		}
+		@top-right {
+		  content: normal;
+		}
+		@top-center {
+		  content: normal;
+		}
+	  }
+  /*]]>*/
+  </style>
+
+  <link href="#rfc.toc" rel="Contents"/>
+<link href="#rfc.section.1" rel="Chapter" title="1 Introduction"/>
+<link href="#rfc.section.1.1" rel="Chapter" title="1.1 Goals"/>
+<link href="#rfc.section.1.2" rel="Chapter" title="1.2 Usage Scenarios"/>
+<link href="#rfc.section.1.3" rel="Chapter" title="1.3 Notational Conventions"/>
+<link href="#rfc.section.2" rel="Chapter" title="2 Conference Talk JSON Document"/>
+<link href="#rfc.section.3" rel="Chapter" title="3 Structure"/>
+<link href="#rfc.section.3.1" rel="Chapter" title="3.1 Root"/>
+<link href="#rfc.section.3.2" rel="Chapter" title="3.2 1:1 Relationships"/>
+<link href="#rfc.section.3.3" rel="Chapter" title="3.3 1:M Relationships"/>
+<link href="#rfc.section.3.4" rel="Chapter" title="3.4 Links"/>
+<link href="#rfc.section.3.4.1" rel="Chapter" title="3.4.1 link"/>
+<link href="#rfc.section.4" rel="Chapter" title="4 Vocabulary"/>
+<link href="#rfc.section.4.1" rel="Chapter" title="4.1 Arrays of Structures"/>
+<link href="#rfc.section.4.1.1" rel="Chapter" title="4.1.1 proposals"/>
+<link href="#rfc.section.4.1.2" rel="Chapter" title="4.1.2 presentations"/>
+<link href="#rfc.section.4.1.3" rel="Chapter" title="4.1.3 presenters"/>
+<link href="#rfc.section.4.1.4" rel="Chapter" title="4.1.4 conferences"/>
+<link href="#rfc.section.4.2" rel="Chapter" title="4.2 proposal"/>
+<link href="#rfc.section.4.2.1" rel="Chapter" title="4.2.1 title"/>
+<link href="#rfc.section.4.2.2" rel="Chapter" title="4.2.2 brief-description"/>
+<link href="#rfc.section.4.2.3" rel="Chapter" title="4.2.3 full-description"/>
+<link href="#rfc.section.4.2.4" rel="Chapter" title="4.2.4 selection-notes"/>
+<link href="#rfc.section.4.2.5" rel="Chapter" title="4.2.5 tags"/>
+<link href="#rfc.section.4.2.6" rel="Chapter" title="4.2.6 target-audience"/>
+<link href="#rfc.section.4.2.7" rel="Chapter" title="4.2.7 length"/>
+<link href="#rfc.section.4.2.8" rel="Chapter" title="4.2.8 languages"/>
+<link href="#rfc.section.4.2.9" rel="Chapter" title="4.2.9 co-presenters"/>
+<link href="#rfc.section.4.2.10" rel="Chapter" title="4.2.10 talk-style"/>
+<link href="#rfc.section.4.3" rel="Chapter" title="4.3 presenter"/>
+<link href="#rfc.section.4.3.1" rel="Chapter" title="4.3.1 name"/>
+<link href="#rfc.section.4.3.2" rel="Chapter" title="4.3.2 email"/>
+<link href="#rfc.section.4.3.3" rel="Chapter" title="4.3.3 airport"/>
+<link href="#rfc.section.4.3.4" rel="Chapter" title="4.3.4 dietary-requirement"/>
+<link href="#rfc.section.4.3.5" rel="Chapter" title="4.3.5 t-shirt-preference"/>
+<link href="#rfc.section.4.4" rel="Chapter" title="4.4 presentation"/>
+<link href="#rfc.section.4.4.1" rel="Chapter" title="4.4.1 presentation-date"/>
+<link href="#rfc.section.4.4.2" rel="Chapter" title="4.4.2 conference"/>
+<link href="#rfc.section.4.4.3" rel="Chapter" title="4.4.3 location"/>
+<link href="#rfc.section.4.4.4" rel="Chapter" title="4.4.4 special-requirements"/>
+<link href="#rfc.section.4.4.5" rel="Chapter" title="4.4.5 attendee-quantity"/>
+<link href="#rfc.section.4.5" rel="Chapter" title="4.5 conference"/>
+<link href="#rfc.section.4.5.1" rel="Chapter" title="4.5.1 talk-style-domain"/>
+<link href="#rfc.section.4.5.2" rel="Chapter" title="4.5.2 tags-domain"/>
+<link href="#rfc.section.4.5.3" rel="Chapter" title="4.5.3 languages-domain"/>
+<link href="#rfc.section.4.5.4" rel="Chapter" title="4.5.4 brief-description-max-size"/>
+<link href="#rfc.section.4.5.5" rel="Chapter" title="4.5.5 full-description-max-size"/>
+<link href="#rfc.section.4.5.6" rel="Chapter" title="4.5.6 t-shirt-domain"/>
+<link href="#rfc.section.4.5.7" rel="Chapter" title="4.5.7 dietary-requirement-domain"/>
+<link href="#rfc.section.5" rel="Chapter" title="5 Link Relations"/>
+<link href="#rfc.section.5.1" rel="Chapter" title="5.1 video-recording"/>
+<link href="#rfc.section.5.1.1" rel="Chapter" title="5.1.1 slides"/>
+<link href="#rfc.section.5.1.2" rel="Chapter" title="5.1.2 presenter"/>
+<link href="#rfc.section.5.1.3" rel="Chapter" title="5.1.3 presentations"/>
+<link href="#rfc.section.5.1.4" rel="Chapter" title="5.1.4 conference"/>
+<link href="#rfc.section.6" rel="Chapter" title="6 IANA Considerations"/>
+<link href="#rfc.section.6.1" rel="Chapter" title="6.1 Registrations"/>
+<link href="#rfc.section.7" rel="Chapter" title="7 Security Considerations"/>
+<link href="#rfc.section.8" rel="Chapter" title="8 Appendix 1 : Mapping to HTML"/>
+<link href="#rfc.section.9" rel="Chapter" title="9 Appendix 2 : Mapping to ALPS"/>
+<link href="#rfc.section.10" rel="Chapter" title="10 Appendix 2 : Mapping to SIREN"/>
+<link href="#rfc.references" rel="Chapter" title="11 Normative References"/>
+<link href="#rfc.appendix.A" rel="Chapter" title="A Acknowledgements"/>
+<link href="#rfc.authors" rel="Chapter"/>
+
+
+  <meta name="generator" content="xml2rfc version 2.4.12 - http://tools.ietf.org/tools/xml2rfc" />
+  <link rel="schema.dct" href="http://purl.org/dc/terms/" />
+
+  <meta name="dct.creator" content="Miller, D." />
+  <meta name="dct.identifier" content="urn:ietf:id:draft-miller-conference-talk-01" />
+  <meta name="dct.issued" scheme="ISO8601" content="2015-11-19" />
+  <meta name="dct.abstract" content="This draft document is a media type specification for describing a conference talk proposals, presenters and presentations.  This format aims to standardize the format of information shared between software components used by conference organizers, speakers and attendees. It is intended to reduce the effort required for speakers to submit session proposals and for conference organizers to process those submissions." />
+  <meta name="description" content="This draft document is a media type specification for describing a conference talk proposals, presenters and presentations.  This format aims to standardize the format of information shared between software components used by conference organizers, speakers and attendees. It is intended to reduce the effort required for speakers to submit session proposals and for conference organizers to process those submissions." />
+
+</head>
+
+<body>
+
+  <table class="header">
+    <tbody>
+    
+    	<tr>
+  <td class="left">Network Working Group</td>
+  <td class="right">D. Miller</td>
+</tr>
+<tr>
+  <td class="left">Internet-Draft</td>
+  <td class="right">Tavis Software Inc.</td>
+</tr>
+<tr>
+  <td class="left">Intended status: Informational</td>
+  <td class="right">November 19, 2015</td>
+</tr>
+<tr>
+  <td class="left">Expires: May 22, 2016</td>
+  <td class="right"></td>
+</tr>
+
+    	
+    </tbody>
+  </table>
+
+  <p class="title">Conference Talk Media Type<br />
+  <span class="filename">draft-miller-conference-talk-01</span></p>
+  
+  <h1 id="rfc.abstract">
+  <a href="#rfc.abstract">Abstract</a>
+</h1>
+<p>This draft document is a media type specification for describing a conference talk proposals, presenters and presentations.  This format aims to standardize the format of information shared between software components used by conference organizers, speakers and attendees. It is intended to reduce the effort required for speakers to submit session proposals and for conference organizers to process those submissions.</p>
+<h1>
+  <a>Note to Readers</a>
+</h1>
+<p>The issues list for this draft can be found at <a href="https://github.com/darrelmiller/conference-talk/issues">https://github.com/darrelmiller/conference-talk/issues</a>.</p>
+<h1 id="rfc.status">
+  <a href="#rfc.status">Status of This Memo</a>
+</h1>
+<p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
+<p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
+<p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
+<p>This Internet-Draft will expire on May 22, 2016.</p>
+<h1 id="rfc.copyrightnotice">
+  <a href="#rfc.copyrightnotice">Copyright Notice</a>
+</h1>
+<p>Copyright (c) 2015 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
+<p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (http://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
+
+  
+  <hr class="noprint" />
+  <h1 class="np" id="rfc.toc"><a href="#rfc.toc">Table of Contents</a></h1>
+  <ul class="toc">
+
+  	<li>1.   <a href="#rfc.section.1">Introduction</a></li>
+<ul><li>1.1.   <a href="#rfc.section.1.1">Goals</a></li>
+<li>1.2.   <a href="#rfc.section.1.2">Usage Scenarios</a></li>
+<li>1.3.   <a href="#rfc.section.1.3">Notational Conventions</a></li>
+</ul><li>2.   <a href="#rfc.section.2">Conference Talk JSON Document</a></li>
+<li>3.   <a href="#rfc.section.3">Structure</a></li>
+<ul><li>3.1.   <a href="#rfc.section.3.1">Root</a></li>
+<li>3.2.   <a href="#rfc.section.3.2">1:1 Relationships</a></li>
+<li>3.3.   <a href="#rfc.section.3.3">1:M Relationships</a></li>
+<li>3.4.   <a href="#rfc.section.3.4">Links</a></li>
+<ul><li>3.4.1.   <a href="#rfc.section.3.4.1">link</a></li>
+</ul></ul><li>4.   <a href="#rfc.section.4">Vocabulary</a></li>
+<ul><li>4.1.   <a href="#rfc.section.4.1">Arrays of Structures</a></li>
+<ul><li>4.1.1.   <a href="#rfc.section.4.1.1">proposals</a></li>
+<li>4.1.2.   <a href="#rfc.section.4.1.2">presentations</a></li>
+<li>4.1.3.   <a href="#rfc.section.4.1.3">presenters</a></li>
+<li>4.1.4.   <a href="#rfc.section.4.1.4">conferences</a></li>
+</ul><li>4.2.   <a href="#rfc.section.4.2">proposal</a></li>
+<ul><li>4.2.1.   <a href="#rfc.section.4.2.1">title</a></li>
+<li>4.2.2.   <a href="#rfc.section.4.2.2">brief-description</a></li>
+<li>4.2.3.   <a href="#rfc.section.4.2.3">full-description</a></li>
+<li>4.2.4.   <a href="#rfc.section.4.2.4">selection-notes</a></li>
+<li>4.2.5.   <a href="#rfc.section.4.2.5">tags</a></li>
+<li>4.2.6.   <a href="#rfc.section.4.2.6">target-audience</a></li>
+<li>4.2.7.   <a href="#rfc.section.4.2.7">length</a></li>
+<li>4.2.8.   <a href="#rfc.section.4.2.8">languages</a></li>
+<li>4.2.9.   <a href="#rfc.section.4.2.9">co-presenters</a></li>
+<li>4.2.10.   <a href="#rfc.section.4.2.10">talk-style</a></li>
+</ul><li>4.3.   <a href="#rfc.section.4.3">presenter</a></li>
+<ul><li>4.3.1.   <a href="#rfc.section.4.3.1">name</a></li>
+<li>4.3.2.   <a href="#rfc.section.4.3.2">email</a></li>
+<li>4.3.3.   <a href="#rfc.section.4.3.3">airport</a></li>
+<li>4.3.4.   <a href="#rfc.section.4.3.4">dietary-requirement</a></li>
+<li>4.3.5.   <a href="#rfc.section.4.3.5">t-shirt-preference</a></li>
+</ul><li>4.4.   <a href="#rfc.section.4.4">presentation</a></li>
+<ul><li>4.4.1.   <a href="#rfc.section.4.4.1">presentation-date</a></li>
+<li>4.4.2.   <a href="#rfc.section.4.4.2">conference</a></li>
+<li>4.4.3.   <a href="#rfc.section.4.4.3">location</a></li>
+<li>4.4.4.   <a href="#rfc.section.4.4.4">special-requirements</a></li>
+<li>4.4.5.   <a href="#rfc.section.4.4.5">attendee-quantity</a></li>
+</ul><li>4.5.   <a href="#rfc.section.4.5">conference</a></li>
+<ul><li>4.5.1.   <a href="#rfc.section.4.5.1">talk-style-domain</a></li>
+<li>4.5.2.   <a href="#rfc.section.4.5.2">tags-domain</a></li>
+<li>4.5.3.   <a href="#rfc.section.4.5.3">languages-domain</a></li>
+<li>4.5.4.   <a href="#rfc.section.4.5.4">brief-description-max-size</a></li>
+<li>4.5.5.   <a href="#rfc.section.4.5.5">full-description-max-size</a></li>
+<li>4.5.6.   <a href="#rfc.section.4.5.6">t-shirt-domain</a></li>
+<li>4.5.7.   <a href="#rfc.section.4.5.7">dietary-requirement-domain</a></li>
+</ul></ul><li>5.   <a href="#rfc.section.5">Link Relations</a></li>
+<ul><li>5.1.   <a href="#rfc.section.5.1">video-recording</a></li>
+<ul><li>5.1.1.   <a href="#rfc.section.5.1.1">slides</a></li>
+<li>5.1.2.   <a href="#rfc.section.5.1.2">presenter</a></li>
+<li>5.1.3.   <a href="#rfc.section.5.1.3">presentations</a></li>
+<li>5.1.4.   <a href="#rfc.section.5.1.4">conference</a></li>
+</ul></ul><li>6.   <a href="#rfc.section.6">IANA Considerations</a></li>
+<ul><li>6.1.   <a href="#rfc.section.6.1">Registrations</a></li>
+</ul><li>7.   <a href="#rfc.section.7">Security Considerations</a></li>
+<li>8.   <a href="#rfc.section.8">Appendix 1 : Mapping to HTML</a></li>
+<li>9.   <a href="#rfc.section.9">Appendix 2 : Mapping to ALPS</a></li>
+<li>10.   <a href="#rfc.section.10">Appendix 2 : Mapping to SIREN</a></li>
+<li>11.   <a href="#rfc.references">Normative References</a></li>
+<li>Appendix A.   <a href="#rfc.appendix.A">Acknowledgements</a></li>
+<li><a href="#rfc.authors">Author's Address</a></li>
+
+
+  </ul>
+
+  <h1 id="rfc.section.1"><a href="#rfc.section.1">1.</a> <a href="#introduction" id="introduction">Introduction</a></h1>
+<p id="rfc.section.1.p.1">In the technology world, one way we share knowledge is via conferences.  In order to have a conference we need speakers to do talks.  Conferences commonly go through a process called <em>call for proposals</em> (CFP) where speakers who are interested submit talk proposals to the conference and then the conference organizers sift through these proposals and select the talks they believe will provide the best value to their attendees.</p>
+<p id="rfc.section.1.p.2">There are a very wide range of methods used by conferences for collecting these proposals:  Google docs, Excel spreadsheets, plain text emails, wikis, custom web sites, commercial conference management systems.  Each of these systems have slightly different ways of collecting information that is mostly the same.</p>
+<p id="rfc.section.1.p.3">Many conferences are run by volunteers with minimal budgets and many speakers do so at their own expense.  Any possibility to improve the efficiency of the process of submitting proposals and processing them could provide significant value to a large number of conference participants.</p>
+<h1 id="rfc.section.1.1"><a href="#rfc.section.1.1">1.1.</a> <a href="#goals" id="goals">Goals</a></h1>
+<p id="rfc.section.1.1.p.1">Easier for speakers to submit</p>
+<p/>
+
+<ul>
+  <li>Easy for authoring tools to generate</li>
+  <li>Minimal formatting capability</li>
+  <li>Author once, submit anywhere with minimal changes</li>
+  <li>Hypermedia links to presenter info.</li>
+</ul>
+<p id="rfc.section.1.1.p.3">Easier for conference organizers to process</p>
+<p/>
+
+<ul>
+  <li>Simple for conference organizers to import</li>
+  <li>Zero UI submission process.</li>
+  <li>Easier to process submissions (queryable structures)</li>
+  <li>Standard UIs can be built to process submission format</li>
+</ul>
+<h1 id="rfc.section.1.2"><a href="#rfc.section.1.2">1.2.</a> <a href="#usage-scenarios" id="usage-scenarios">Usage Scenarios</a></h1>
+<p id="rfc.section.1.2.p.1">There are a wide range of scenarios that could be enabled by this common format:</p>
+<p/>
+
+<ul>
+  <li>Client Authoring tools that offer a good editing experience for creating new proposals.  (Maybe not, because it is not a content creation format)</li>
+  <li>Conference API for accepting proposals.</li>
+  <li>Convert to HTML/PDF for submission to non-automated conferences or for publication of selected talks on conference website.</li>
+  <li>Searchable repository of past talks with links to slides and videos.</li>
+  <li>Central repository of available speakers talks.  Reverse the process so that conferences go looking for speakers instead of the other way around.</li>
+</ul>
+<h1 id="rfc.section.1.3"><a href="#rfc.section.1.3">1.3.</a> <a href="#notational-conventions" id="notational-conventions">Notational Conventions</a></h1>
+<p id="rfc.section.1.3.p.1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a href="#RFC2119">[RFC2119]</a>.</p>
+<h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> <a href="#conference-talk-json-document" id="conference-talk-json-document">Conference Talk JSON Document</a></h1>
+<p id="rfc.section.2.p.1">The canonical model for a conference-talk document is a JSON object as defined in the I-JSON specification <a href="#RFC7493">[RFC7493]</a>. The properties of the JSON object can be any valid vocabulary term from this specification. Unrecognized vocabulary should be ignored unless a consumer explicitly requests strict processing of the document.</p>
+<p id="rfc.section.2.p.2">A minimal submission might look like this:</p>
+<pre>
+    { "proposal" : {
+     "title" : "An Introduction To Media Type Design",
+     "brief-description" : "Blah Blah Blah",
+     "presenter" : {
+       "name" : "Darrel Miller",
+       }
+      }}
+
+</pre>
+<p id="rfc.section.2.p.3">A more complete proposal might look like,</p>
+<pre>
+  { "proposal" : {
+    "title" : "An Introduction To Media Type Design",
+    "brief-description" : "Blah Blah Blah",
+    "full-description" : "Even longer blah Blah Blah",
+    "keywords" : ["javascript", "java", "http"],
+    "length" : {
+      "preferred" : 60,
+      "min" : 45,
+      "max" : 90
+    }
+    "presenter" : {
+      "name" : "Darrel Miller",
+      "email" : "darrel@example.com"
+      }
+    },
+    "co-presenters" : [{
+      "name" : "Bob Brown",
+      "email" : "bob@example.com"
+      }],
+    "past-presentations" : [{
+          "presentation-date" : "20150911",
+          "conference" : "UberConf"
+      }]
+  }
+
+</pre>
+<p id="rfc.section.2.p.4">This specification is intended primarily to describe a message format that only exists to transfer information between two independent systems. It is not intended as a persistence format or a content creation format. JSON is ideal for this purpose. However, it should be fairly straightforward to apply the structure and semantics defined in this document to other formats.</p>
+<h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a> <a href="#structure" id="structure">Structure</a></h1>
+<p id="rfc.section.3.p.1">This media type is designed to hold information related to conference proposals, their presenters and the presentations of those sessions.  However, it imposes minimal structural constraints on the document. This is done in order to support as many scenarios as possible. A document instance may be used to submit a new proposal to a conference. Or it may be used to return a list of presentations that were held at a conference. It can also be used to return a list of presenters who will be speaking at a conference. The overall structure is fairly flexible, but the semantics of the named structures within the document are well defined.</p>
+<p id="rfc.section.3.p.2">A conference-talk document may be valid, but still incompatible with a particular resource that only accepts <samp>conference-talk</samp> documents structured in a certain way.</p>
+<h1 id="rfc.section.3.1"><a href="#rfc.section.3.1">3.1.</a> <a href="#root" id="root">Root</a></h1>
+<p id="rfc.section.3.1.p.1">The root of the document MUST be a JSON object, whose properties names are structures defined in this vocabulary.</p>
+<pre>
+    {
+      "presenter" : {...} },
+      "proposals" : [...] },
+      "presentations" : [...] },
+    }
+</pre>
+<p id="rfc.section.3.1.p.2">There is no fixed structure to the root object. It can contain any number of properties that are either objects or arrays.</p>
+<h1 id="rfc.section.3.2"><a href="#rfc.section.3.2">3.2.</a> <a href="#relationships" id="relationships">1:1 Relationships</a></h1>
+<p id="rfc.section.3.2.p.1">Certain structures can contain other structures in a 1:1 relationship. E.g.</p>
+<p/>
+
+<ul>
+  <li>A <samp>proposal</samp> structure can contain a <samp>presenter</samp> structure to indicate the primary presenter.</li>
+  <li>A <samp>presentation</samp> structure can contain a <samp>presenter</samp> structure indicating who was the primary presenter of a past presentation.</li>
+  <li>A <samp>presentation</samp> structure can contain a <samp>proposal</samp> structure indicating the proposal that was submitted and selected for the presentation.</li>
+  <li>A <samp>presentation</samp> structure can contain a <samp>conference</samp> structure indicating the conference at which the presentation was presented.</li>
+</ul>
+<h1 id="rfc.section.3.3"><a href="#rfc.section.3.3">3.3.</a> <a href="#m-relationships" id="m-relationships">1:M Relationships</a></h1>
+<p id="rfc.section.3.3.p.1">Lists of structures can be contained as an attribute of other structures to indicate a relationship between the structures.  For example:</p>
+<p/>
+
+<ul>
+  <li><samp>presenter</samp> can have a list attribute called <samp>proposals</samp> containing <samp>proposal</samp> structures.</li>
+  <li><samp>presenter</samp> can have a list attribute called <samp>presentations</samp> containing <samp>presentation</samp> structures.</li>
+  <li><samp>proposal</samp> can have a list attribute called <samp>past-presentations</samp> containing <samp>presentation</samp> structures.</li>
+  <li><samp>proposal</samp> can have a list attribute called <samp>co-presenters</samp> containing <samp>presenter</samp> structures.</li>
+</ul>
+<h1 id="rfc.section.3.4"><a href="#rfc.section.3.4">3.4.</a> <a href="#links" id="links">Links</a></h1>
+<p id="rfc.section.3.4.p.1">All structures defined in this vocabulary can contain a property called  <samp>links</samp>.  This property contains an array of <samp>link</samp> objects.  Links are a way to break apart pieces of the document for the purposes of reuse and controlling granularity.  Through the use of relative URIs and fragments we can use links with the document to reduce redundancy.</p>
+<pre>
+links : [
+          { "rel" : "",
+            "href" : ""},
+          { "rel" : "",
+            "href" : ""}
+          ]
+</pre>
+<p id="rfc.section.3.4.p.2">Note: There was no need to adopt the HAL convention of using _Links as the allowed vocabulary is explicitly defined for this media type.  The array of links was chosen instead of an object to allow multiple link relations of the same type without having to define multiple arrays.</p>
+<h1 id="rfc.section.3.4.1"><a href="#rfc.section.3.4.1">3.4.1.</a> <a href="#link" id="link">link</a></h1>
+<h1 id="rfc.section.3.4.1.1"><a href="#rfc.section.3.4.1.1">3.4.1.1.</a> <a href="#rel" id="rel">rel</a></h1>
+<p id="rfc.section.3.4.1.1.p.1">Link relations values defined in the <samp>conference-talk</samp> conference talk document can be used as simple strings as long as they are prefixed with a period. However, any parsing tool must map them to a URI using the following URI template https://tavis.net/rels/conference-talk/{relname}.</p>
+<h1 id="rfc.section.3.4.1.2"><a href="#rfc.section.3.4.1.2">3.4.1.2.</a> <a href="#href" id="href">href</a></h1>
+<p id="rfc.section.3.4.1.2.p.1">The href property can resolve to a relative URI and use relative fragment identifiers to point to content within the current document. Fragment identifiers follow the scheme defined by the JSON-Pointer specification. This prevents the need to duplicate content within a document.</p>
+<p id="rfc.section.3.4.1.2.p.2">For example, the sample below has an array of proposals, and each one points to a presenter structure and conference structure.  ~~~~~~~~~~</p>
+<pre>
+{ "proposals" : [{
+ "title" : "An Introduction To Media Type Design",
+ "brief-description" : "Blah Blah Blah",
+"links" [
+  { "rel" : ".presenter", "href" : "#presenter"},
+  { "rel" : ".conference", "href" : "#conference"}
+]
+},
+{
+"title" : "Crafting Evolvable Representations",
+"brief-description" : "Double blah",
+"links" [
+  { "rel" : ".presenter", "href" : "#presenter"},
+  { "rel" : ".conference", "href" : "#conference"}
+]
+},
+],   "presenter" : {
+  "name" : "Darrel Miller",
+  "bio"  : "blah blah blah"
+},   "conference" : {
+  "name" : "The Meta Conference",
+  "description"  : "The conference about conferences"
+ }
+}
+</pre>
+<p id="rfc.section.3.4.1.2.p.3">~~~~~~~~~~</p>
+<h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a> <a href="#vocabulary" id="vocabulary">Vocabulary</a></h1>
+<h1 id="rfc.section.4.1"><a href="#rfc.section.4.1">4.1.</a> <a href="#arrays-of-structures" id="arrays-of-structures">Arrays of Structures</a></h1>
+<h1 id="rfc.section.4.1.1"><a href="#rfc.section.4.1.1">4.1.1.</a> <a href="#proposals" id="proposals">proposals</a></h1>
+<p id="rfc.section.4.1.1.p.1">An array of <samp>proposal</samp> structures.</p>
+<h1 id="rfc.section.4.1.2"><a href="#rfc.section.4.1.2">4.1.2.</a> <a href="#presentations" id="presentations">presentations</a></h1>
+<p id="rfc.section.4.1.2.p.1">An array of <samp>presentation</samp> structures.</p>
+<h1 id="rfc.section.4.1.3"><a href="#rfc.section.4.1.3">4.1.3.</a> <a href="#presenters" id="presenters">presenters</a></h1>
+<p id="rfc.section.4.1.3.p.1">An array of <samp>presenter</samp> structures.</p>
+<h1 id="rfc.section.4.1.4"><a href="#rfc.section.4.1.4">4.1.4.</a> <a href="#conferences" id="conferences">conferences</a></h1>
+<p id="rfc.section.4.1.4.p.1">An array of <samp>conference</samp> structures.</p>
+<h1 id="rfc.section.4.2"><a href="#rfc.section.4.2">4.2.</a> <a href="#proposal" id="proposal">proposal</a></h1>
+<p id="rfc.section.4.2.p.1">The proposal structure represents a description of a single conference session.  The only required property of the proposal structure is the title property.</p>
+<h1 id="rfc.section.4.2.1"><a href="#rfc.section.4.2.1">4.2.1.</a> <a href="#title" id="title">title</a></h1>
+<p id="rfc.section.4.2.1.p.1">The title property is a single sentence description of the talk, normally used as a heading.  This is a required property.  Physical limits on the size of descriptive fields like this one are left to the choice of implementers.  If a specific implementation chooses to limit titles to 80 characters and it subsequently receives a document with a title that exceeds that amount, the implementation must choose whether to refuse the content, or to truncate it.</p>
+<h1 id="rfc.section.4.2.2"><a href="#rfc.section.4.2.2">4.2.2.</a> <a href="#brief-description" id="brief-description">brief-description</a></h1>
+<p id="rfc.section.4.2.2.p.1">Conferences often ask for short descriptions of sessions to be used on web sites or in promotional material. Some conferences insist on brief descriptions to reduce the time it takes for the selection committee to process the proposals.  This specification currently does not enforce the size of a brief description and therefore there may be cases where a brief-description submitted to one conference is not accepted to another because they have differing opinions on what brief means. Feedback will drive whether a hard limit is included in this specification.</p>
+<h1 id="rfc.section.4.2.3"><a href="#rfc.section.4.2.3">4.2.3.</a> <a href="#full-description" id="full-description">full-description</a></h1>
+<p id="rfc.section.4.2.3.p.1">Sometimes a brief description is sufficient to spark interest in a talk, but the reader wishes to get more details.  The full-description of the session can be used to go into detail about the presentation.  Implementations can choose whether this description is made public or not.</p>
+<h1 id="rfc.section.4.2.4"><a href="#rfc.section.4.2.4">4.2.4.</a> <a href="#selection-notes" id="selection-notes">selection-notes</a></h1>
+<p id="rfc.section.4.2.4.p.1">It is common for proposals to have additional information that is only directed at the selection committee. This information would not be made public.</p>
+<h1 id="rfc.section.4.2.5"><a href="#rfc.section.4.2.5">4.2.5.</a> <a href="#tags" id="tags">tags</a></h1>
+<p id="rfc.section.4.2.5.p.1">The tags attribute contains an array of strings used for the purpose of classifying talks into categories. Although different conferences may use different sets of tags, in a communication between speaker and conference organizer, only one set of tags is valid.  For client applications that might store conference proposals for speakers, it may be necessary to store multiple sets of tags to accomadate submissions to different conferences.  However, this specification is not aiming to describe a storage format.</p>
+<pre>
+tags : ["testing","performance"]
+
+</pre>
+<h1 id="rfc.section.4.2.6"><a href="#rfc.section.4.2.6">4.2.6.</a> <a href="#target-audience" id="target-audience">target-audience</a></h1>
+<p id="rfc.section.4.2.6.p.1">Conference sessions are often rated based on their technical difficulty.This property is numeric value on the scale of 1 to 5, where 1 indicates no experience is required to benefit from the session, to 5 which indicates the audience require a strong knowledge in the subject matter to fully appreciate the talk.</p>
+<pre>
+target-audience : 1
+</pre>
+<p id="rfc.section.4.2.6.p.2">Conference organizers are free to map this range of values to whatever equivalent ranking scheme they use.</p>
+<h1 id="rfc.section.4.2.7"><a href="#rfc.section.4.2.7">4.2.7.</a> <a href="#length" id="length">length</a></h1>
+<p id="rfc.section.4.2.7.p.1">Different conferences have different sessions lengths.  Sometimes the same conference has sessions of different lengths.  It is not uncommon for speakers to have some flexibility in how long a particular talk can take.  In order to accomodate these different scenarios, the length property is defined using three values : <samp>preferred-length</samp>,<samp>max-length</samp> and <samp>min-length</samp>.  All three values are specified in integer minutes.  By specifying a range, conferences can determine if a talk can fit into the planned slots.</p>
+<pre>
+length : {
+  "preferred" : 45,
+  "max": 60,
+  "min" : 30
+}
+</pre>
+<h1 id="rfc.section.4.2.8"><a href="#rfc.section.4.2.8">4.2.8.</a> <a href="#languages" id="languages">languages</a></h1>
+<p id="rfc.section.4.2.8.p.1">Some conferences are multi-lingual and sometimes speakers are able to perform talks in multiple languages.  The language property contains an array of language codes as described in <a href="#RFC5646">[RFC5646]</a>.</p>
+<pre>
+language : ["en","fr"]
+</pre>
+<h1 id="rfc.section.4.2.9"><a href="#rfc.section.4.2.9">4.2.9.</a> <a href="#co-presenters" id="co-presenters">co-presenters</a></h1>
+<p id="rfc.section.4.2.9.p.1">Some presentations are done with multiple presenters.  As this is more the exception than the rule, it is easier to consider a proposal as having a single primary presenter and then treat other presenters as <samp>co-presenters</samp>.  This attribute is an array of <samp>presenter</samp> structures.</p>
+<h1 id="rfc.section.4.2.10"><a href="#rfc.section.4.2.10">4.2.10.</a> <a href="#talk-style" id="talk-style">talk-style</a></h1>
+<p id="rfc.section.4.2.10.p.1">Style is an identifier that classifies the type of talk being submitted.  This value is a string identifier from a set of valid values as defined by the conference being submitted to.</p>
+<pre>
+talk-style : "workshop"
+</pre>
+<h1 id="rfc.section.4.3"><a href="#rfc.section.4.3">4.3.</a> <a href="#presenter" id="presenter">presenter</a></h1>
+<p id="rfc.section.4.3.p.1">A <samp>presenter</samp> structure represents the information about a person who will or who has presented a conference talk.</p>
+<h1 id="rfc.section.4.3.1"><a href="#rfc.section.4.3.1">4.3.1.</a> <a href="#name" id="name">name</a></h1>
+<p id="rfc.section.4.3.1.p.1">The name attribute is a string value that contains the name of the present for purposes of displaying the name.</p>
+<h1 id="rfc.section.4.3.2"><a href="#rfc.section.4.3.2">4.3.2.</a> <a href="#email" id="email">email</a></h1>
+<p id="rfc.section.4.3.2.p.1">The email property</p>
+<pre>
+email = &lt;addr-spec see {{RFC2822}}, Section 3.4.1&gt;
+</pre>
+<h1 id="rfc.section.4.3.3"><a href="#rfc.section.4.3.3">4.3.3.</a> <a href="#airport" id="airport">airport</a></h1>
+<p id="rfc.section.4.3.3.p.1">The home airport of the presenter. This information is used to approximate travel costs for speakers and aid in the selection process. This is a string value.</p>
+<h1 id="rfc.section.4.3.4"><a href="#rfc.section.4.3.4">4.3.4.</a> <a href="#dietary-requirement" id="dietary-requirement">dietary-requirement</a></h1>
+<p id="rfc.section.4.3.4.p.1">An identifier selected from the list of available values as defined by the conference. This is a string value.</p>
+<h1 id="rfc.section.4.3.5"><a href="#rfc.section.4.3.5">4.3.5.</a> <a href="#t-shirt-preference" id="t-shirt-preference">t-shirt-preference</a></h1>
+<p id="rfc.section.4.3.5.p.1">An identifier selected from the list of available values as defined by the conference. This is a string value.</p>
+<h1 id="rfc.section.4.4"><a href="#rfc.section.4.4">4.4.</a> <a href="#presentation" id="presentation">presentation</a></h1>
+<p id="rfc.section.4.4.p.1">The <samp>presentation</samp> structure is a historical record of a talk described by a proposal structure that has been presented at a conference.</p>
+<h1 id="rfc.section.4.4.1"><a href="#rfc.section.4.4.1">4.4.1.</a> <a href="#presentation-date" id="presentation-date">presentation-date</a></h1>
+<p id="rfc.section.4.4.1.p.1">This property represents the date that a particular talk was given. The date should be in ISO 8601 format as required by I-JSON.</p>
+<h1 id="rfc.section.4.4.2"><a href="#rfc.section.4.4.2">4.4.2.</a> <a href="#conference" id="conference">conference</a></h1>
+<p id="rfc.section.4.4.2.p.1">The name of the conference where the presentation was given. This is a string value.</p>
+<h1 id="rfc.section.4.4.3"><a href="#rfc.section.4.4.3">4.4.3.</a> <a href="#location" id="location">location</a></h1>
+<p id="rfc.section.4.4.3.p.1">The physical location where conference is being held. This can simply country or city and country. This is a string value.</p>
+<h1 id="rfc.section.4.4.4"><a href="#rfc.section.4.4.4">4.4.4.</a> <a href="#special-requirements" id="special-requirements">special-requirements</a></h1>
+<p id="rfc.section.4.4.4.p.1">This is a free form text field used to communicate to the conference organizers any special hardware, setup, or environmental requirements needed for this talk to be presented. This is a string value.</p>
+<h1 id="rfc.section.4.4.5"><a href="#rfc.section.4.4.5">4.4.5.</a> <a href="#attendee-quantity" id="attendee-quantity">attendee-quantity</a></h1>
+<p id="rfc.section.4.4.5.p.1">This field is a number that provides an approximate quantity of people who attended the presentation.</p>
+<h1 id="rfc.section.4.5"><a href="#rfc.section.4.5">4.5.</a> <a href="#conference-1" id="conference-1">conference</a></h1>
+<p id="rfc.section.4.5.p.1">The <samp>conference</samp> structure is used to describe its purpose, its location, the timeline of events and the domains of valid values for properties like, <samp>tags</samp>, <samp>talk-style</samp> and <samp>languages</samp>.  It also can contain limits such as maximum lengths for <samp>brief-description</samp>, and <samp>full-description</samp>.</p>
+<h1 id="rfc.section.4.5.1"><a href="#rfc.section.4.5.1">4.5.1.</a> <a href="#talk-style-domain" id="talk-style-domain">talk-style-domain</a></h1>
+<p id="rfc.section.4.5.1.p.1">TK</p>
+<h1 id="rfc.section.4.5.2"><a href="#rfc.section.4.5.2">4.5.2.</a> <a href="#tags-domain" id="tags-domain">tags-domain</a></h1>
+<p id="rfc.section.4.5.2.p.1">TK</p>
+<h1 id="rfc.section.4.5.3"><a href="#rfc.section.4.5.3">4.5.3.</a> <a href="#languages-domain" id="languages-domain">languages-domain</a></h1>
+<p id="rfc.section.4.5.3.p.1">TK</p>
+<h1 id="rfc.section.4.5.4"><a href="#rfc.section.4.5.4">4.5.4.</a> <a href="#brief-description-max-size" id="brief-description-max-size">brief-description-max-size</a></h1>
+<p id="rfc.section.4.5.4.p.1">TK</p>
+<h1 id="rfc.section.4.5.5"><a href="#rfc.section.4.5.5">4.5.5.</a> <a href="#full-description-max-size" id="full-description-max-size">full-description-max-size</a></h1>
+<p id="rfc.section.4.5.5.p.1">TK</p>
+<h1 id="rfc.section.4.5.6"><a href="#rfc.section.4.5.6">4.5.6.</a> <a href="#t-shirt-domain" id="t-shirt-domain">t-shirt-domain</a></h1>
+<p id="rfc.section.4.5.6.p.1">TK</p>
+<h1 id="rfc.section.4.5.7"><a href="#rfc.section.4.5.7">4.5.7.</a> <a href="#dietary-requirement-domain" id="dietary-requirement-domain">dietary-requirement-domain</a></h1>
+<p id="rfc.section.4.5.7.p.1">TK</p>
+<h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> <a href="#link-relations" id="link-relations">Link Relations</a></h1>
+<h1 id="rfc.section.5.1"><a href="#rfc.section.5.1">5.1.</a> <a href="#video-recording" id="video-recording">video-recording</a></h1>
+<p id="rfc.section.5.1.p.1">This is a URL that points to a video recording of the presentation.</p>
+<h1 id="rfc.section.5.1.1"><a href="#rfc.section.5.1.1">5.1.1.</a> <a href="#slides" id="slides">slides</a></h1>
+<p id="rfc.section.5.1.1.p.1">This is a URL that points to a the slide deck used in the presentation.</p>
+<h1 id="rfc.section.5.1.2"><a href="#rfc.section.5.1.2">5.1.2.</a> <a href="#presenter-1" id="presenter-1">presenter</a></h1>
+<p id="rfc.section.5.1.2.p.1">This is a URL that points to the details relating to the presenter of the presentation.</p>
+<h1 id="rfc.section.5.1.3"><a href="#rfc.section.5.1.3">5.1.3.</a> <a href="#presentations-1" id="presentations-1">presentations</a></h1>
+<p id="rfc.section.5.1.3.p.1">This is a URL that points to a list of presentations.</p>
+<h1 id="rfc.section.5.1.4"><a href="#rfc.section.5.1.4">5.1.4.</a> <a href="#conference-2" id="conference-2">conference</a></h1>
+<p id="rfc.section.5.1.4.p.1">This is a URL that points to information about a conference.</p>
+<h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> <a href="#iana" id="iana">IANA Considerations</a></h1>
+<h1 id="rfc.section.6.1"><a href="#rfc.section.6.1">6.1.</a> <a href="#registrations" id="registrations">Registrations</a></h1>
+<h1 id="rfc.section.7"><a href="#rfc.section.7">7.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a></h1>
+<h1 id="rfc.section.8"><a href="#rfc.section.8">8.</a> <a href="#appendix-1-mapping-to-html" id="appendix-1-mapping-to-html">Appendix 1 : Mapping to HTML</a></h1>
+<h1 id="rfc.section.9"><a href="#rfc.section.9">9.</a> <a href="#appendix-2-mapping-to-alps" id="appendix-2-mapping-to-alps">Appendix 2 : Mapping to ALPS</a></h1>
+<h1 id="rfc.section.10"><a href="#rfc.section.10">10.</a> <a href="#appendix-2-mapping-to-siren" id="appendix-2-mapping-to-siren">Appendix 2 : Mapping to SIREN</a></h1>
+<h1 id="rfc.references"><a href="#rfc.references">11.</a> Normative References</h1>
+<table>
+  <tbody>
+    <tr>
+      <td class="reference">
+        <b id="RFC2119">[RFC2119]</b>
+      </td>
+      <td class="top"><a>Bradner, S.</a>, "<a href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>", BCP 14, RFC 2119, DOI 10.17487/RFC2119, March 1997.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC2822">[RFC2822]</b>
+      </td>
+      <td class="top"><a>Resnick, P.</a>, "<a href="http://tools.ietf.org/html/rfc2822">Internet Message Format</a>", RFC 2822, DOI 10.17487/RFC2822, April 2001.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC5646">[RFC5646]</b>
+      </td>
+      <td class="top"><a>Phillips, A.</a> and <a>M. Davis</a>, "<a href="http://tools.ietf.org/html/rfc5646">Tags for Identifying Languages</a>", BCP 47, RFC 5646, DOI 10.17487/RFC5646, September 2009.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC7493">[RFC7493]</b>
+      </td>
+      <td class="top"><a>Bray, T.</a>, "<a href="http://tools.ietf.org/html/rfc7493">The I-JSON Message Format</a>", RFC 7493, DOI 10.17487/RFC7493, March 2015.</td>
+    </tr>
+  </tbody>
+</table>
+<h1 id="rfc.appendix.A"><a href="#rfc.appendix.A">Appendix A.</a> <a href="#acknowledgements" id="acknowledgements">Acknowledgements</a></h1>
+<h1 id="rfc.authors">
+  <a href="#rfc.authors">Author's Address</a>
+</h1>
+<div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Darrel Miller</span> 
+	  <span class="n hidden">
+		<span class="family-name">Miller</span>
+	  </span>
+	</span>
+	<span class="org vcardline">Tavis Software Inc.</span>
+	<span class="adr">
+	  
+	  <span class="vcardline">
+		<span class="locality"></span> 
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline"></span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:darrel@tavis.ca">darrel@tavis.ca</a></span>
+
+<span class="vcardline">URI: <a href="http://www.bizcoder.com">http://www.bizcoder.com</a></span>
+
+  </address>
+</div>
+
+</body>
+</html>
