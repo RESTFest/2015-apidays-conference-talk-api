@@ -9,3 +9,7 @@ A powershell script is included for Windows users:
     python.exe c:\bin\python2\scripts\xml2rfc output/conference-talk.xml --html
 
 Paths may need to be changed. 
+
+## Related Projects
+
+* [Jekyll-Conference-Talk](https://github.com/switzersc/jekyll-conference-talk) - This is a jekyll blog template that helps you incorporate your conference-talk json into a Jekyll blog to display talks you've given. 
